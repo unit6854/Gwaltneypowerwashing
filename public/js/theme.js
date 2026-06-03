@@ -153,7 +153,7 @@
   // ─── Scroll-triggered fade-in ─────────────────────────────────────────────
   (function initScrollReveal() {
     const els = document.querySelectorAll(
-      '.gpw-service-card, .gpw-gallery-item, .gpw-testi-card, .gpw-stat-col, .gpw-about__point, .gpw-compliance-item'
+      '.gpw-service-card, .gpw-ba-wrap, .gpw-testi-card, .gpw-stat-col, .gpw-about__point, .gpw-compliance-item'
     );
     if (!els.length) return;
 

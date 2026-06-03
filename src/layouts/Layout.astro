@@ -50,6 +50,16 @@ const siteUrl = "https://gwaltneypressurewashing.com";
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
+  <!-- Sitemap -->
+  <link rel="sitemap" href="/sitemap.xml" />
+
+  <!-- Hero texture preloads — dirty.webp + clean.webp are loaded by the
+       WebGL water effect; preloading them eliminates the blank-hero delay -->
+  <link rel="preload" as="image" href="/images/dirty.webp" fetchpriority="high" />
+  <link rel="preload" as="image" href="/images/clean.webp" />
+  <!-- Preload Three.js so the GPU effect starts as soon as possible -->
+  <link rel="preload" as="script" href="/js/three.min.js" />
+
   <!-- Netlify Identity (for Decap CMS login redirect) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
@@ -96,7 +106,6 @@ const siteUrl = "https://gwaltneypressurewashing.com";
       "opens": "07:00",
       "closes": "18:00"
     },
-    "priceRange": "$$",
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Pressure Washing Services",
