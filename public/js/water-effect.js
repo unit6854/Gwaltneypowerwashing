@@ -287,8 +287,8 @@
     var sweepX      = 0.01;
     var sweepDir    = 1;
     var sweepY      = 0.90;
-    var sweepRowH   = 0.048;
-    var sweepDelay  = 0.8;
+    var sweepRowH   = 0.055;  // wider rows to match faster sweep
+    var sweepDelay  = 0.5;    // start sooner (was 0.8)
     var sweepElapsed = 0;
     var sweepStarted = false;
 
@@ -331,7 +331,7 @@
         sweepElapsed += dt;
         if (sweepElapsed > sweepDelay) {
           if (!sweepStarted) { sweepStarted = true; mouseActive = true; }
-          sweepX += sweepDir * 0.22 * dt;
+          sweepX += sweepDir * 0.308 * dt;  // 40% faster (was 0.22)
           if (sweepX >= 0.99 || sweepX <= 0.01) {
             sweepDir *= -1;
             sweepY = sweepY - sweepRowH;
