@@ -1107,7 +1107,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-/* Circular drag handle */
+/* Circular drag handle — must receive pointer events even though
+   parent .gpw-ba-divider has pointer-events:none */
 .gpw-ba-handle {
   position: absolute;
   top: 50%;
@@ -1121,7 +1122,8 @@ ul { list-style: none; margin: 0; padding: 0; }
   align-items: center;
   justify-content: center;
   box-shadow: 0 2px 16px rgba(0,0,0,0.40);
-  pointer-events: none;
+  pointer-events: auto;   /* override parent's pointer-events:none */
+  cursor: col-resize;
   color: var(--gpw-deep);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -1940,7 +1942,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 900px) {
   .gpw-about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .gpw-about__badge-card { display: flex; } /* keep badge visible, it's already centred */
-  .gpw-about__img { aspect-ratio: 4/5; max-width: 380px; margin-inline: auto; object-position: 78% center; }
+  .gpw-about__img { aspect-ratio: 4/5; max-width: 380px; margin-inline: auto; object-position: 70% center; }
   .gpw-quote-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .gpw-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .gpw-stat-col + .gpw-stat-col { border-left: none; }
