@@ -65,6 +65,7 @@
     })();
 
     var loader   = new THREE.TextureLoader();
+    loader.crossOrigin = 'anonymous';  // must match the crossorigin="anonymous" preload links
     var texDirty = loader.load(BASE + 'dirty.webp', onTex);
     var texClean = loader.load(BASE + 'clean.webp', onTex);
     texDirty.wrapS = texDirty.wrapT = THREE.ClampToEdgeWrapping;
