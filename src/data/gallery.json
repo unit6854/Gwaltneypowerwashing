@@ -1,25 +1,32 @@
 {
-  "label": "Our Work",
-  "heading": "Before & After Gallery",
-  "subheading": "Real results from real jobs across Wilson, Davidson, and Rutherford Counties.",
-  "images": [
-    { "src": "/images/gallery/Resized_1000004232.webp", "title": "Driveway Cleaning",       "category": "Driveways",        "tall": false },
-    { "src": "/images/gallery/Resized_1000004368.webp", "title": "House Washing",            "category": "House Washing",    "tall": true  },
-    { "src": "/images/gallery/Resized_1000004375.webp", "title": "Concrete Cleaning",        "category": "Concrete",         "tall": false },
-    { "src": "/images/gallery/Resized_1000004659.webp", "title": "Deck & Patio Restoration", "category": "Decks & Patios",   "tall": false },
-    { "src": "/images/gallery/Resized_1000004742.webp", "title": "Driveway Deep Clean",      "category": "Driveways",        "tall": false },
-    { "src": "/images/gallery/Resized_1000004743.webp", "title": "Commercial Exterior",      "category": "Commercial",       "tall": false },
-    { "src": "/images/gallery/Resized_1000004797.webp", "title": "Sidewalk & Walkway",       "category": "Driveways",        "tall": false },
-    { "src": "/images/gallery/Resized_1000004800.webp", "title": "House Soft Wash",          "category": "House Washing",    "tall": false },
-    { "src": "/images/gallery/Resized_1000005041.webp", "title": "Patio & Steps",            "category": "Decks & Patios",   "tall": false },
-    { "src": "/images/gallery/Resized_1000005046.webp", "title": "Fence Cleaning",           "category": "Decks & Patios",   "tall": false },
-    { "src": "/images/gallery/Resized_1000005050.webp", "title": "Parking Lot Cleaning",     "category": "Commercial",       "tall": false },
-    { "src": "/images/gallery/Resized_1000005052.webp", "title": "Building Exterior",        "category": "Commercial",       "tall": false },
-    { "src": "/images/gallery/Resized_1000005053.webp", "title": "Concrete Restoration",     "category": "Concrete",         "tall": false },
-    { "src": "/images/gallery/Resized_1000005222.webp", "title": "Residential Driveway",     "category": "Driveways",        "tall": false },
-    { "src": "/images/gallery/Resized_1000005223.webp", "title": "Fleet Vehicle Wash",       "category": "Fleet",            "tall": false },
-    { "src": "/images/gallery/Resized_1000005224.webp", "title": "House Exterior Wash",      "category": "House Washing",    "tall": false },
-    { "src": "/images/gallery/Resized_1000005303.webp", "title": "Deck Revitalization",      "category": "Decks & Patios",   "tall": false },
-    { "src": "/images/gallery/1000004294.webp",         "title": "Power Washing in Action",  "category": "Commercial",       "tall": false }
+  "label": "Real Results",
+  "heading": "Real Results You Can See Instantly",
+  "subheading": "Slide to reveal the difference professional pressure washing makes.",
+  "pairs": [
+    {
+      "before": "/images/gallery/Resized_1000004800.webp",
+      "after":  "/images/gallery/Resized_1000005041.webp",
+      "caption": "Concrete Driveway — Mt. Juliet, TN"
+    },
+    {
+      "before": "/images/gallery/Resized_1000005224.webp",
+      "after":  "/images/gallery/Resized_1000005223.webp",
+      "caption": "House Exterior Wash — Wilson County, TN"
+    },
+    {
+      "before": "/images/gallery/Resized_1000005050.webp",
+      "after":  "/images/gallery/Resized_1000005052.webp",
+      "caption": "Concrete & Parking Area — Davidson County, TN"
+    },
+    {
+      "before": "/images/gallery/Resized_1000004797.webp",
+      "after":  "/images/gallery/Resized_1000004800.webp",
+      "caption": "Walkway & Sidewalk — Mt. Juliet, TN"
+    },
+    {
+      "before": "/images/gallery/Resized_1000004368.webp",
+      "after":  "/images/gallery/Resized_1000004375.webp",
+      "caption": "Deck & Patio Restoration — Hermitage, TN"
+    }
   ]
 }

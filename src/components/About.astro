@@ -20,10 +20,17 @@ const ownerIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" s
   <div class="gpw-section-inner">
     <div class="gpw-about-grid">
 
-      <!-- Visual -->
+      <!-- Photo -->
       <div class="gpw-about__visual">
-        <div class="gpw-about__img" role="img" aria-label="Brian Gwaltney, owner of Gwaltney's All Seasons Pressure Washing"></div>
-
+        <img
+          src="/images/about-brian.webp"
+          alt="Brian Gwaltney — owner of Gwaltney's All Seasons Pressure Washing, Mt. Juliet, TN"
+          class="gpw-about__img"
+          loading="lazy"
+          decoding="async"
+          width="600"
+          height="750"
+        />
         <div class="gpw-about__badge-card" aria-hidden="true">
           <div class="gpw-about__badge-icon" set:html={ownerIcon}></div>
           <div>
@@ -36,9 +43,9 @@ const ownerIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" s
       <!-- Text -->
       <div>
         <span class="gpw-label">{data.label}</span>
-        <h2 id="about-heading" style="margin:0.5rem 0 1.25rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{data.heading}</h2>
+        <h2 id="about-heading" class="gpw-section-heading" style="margin:0.5rem 0 1.25rem;">{data.heading}</h2>
         <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.7;margin:0 0 1rem;">{data.body}</p>
-        <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.7;margin:0 0 1.75rem;font-style:italic;border-left:2px solid var(--gpw-green);padding-left:1rem;">{data.body2}</p>
+        <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.7;margin:0 0 1.75rem;font-style:italic;border-left:3px solid var(--gpw-green);padding-left:1rem;">{data.body2}</p>
 
         <div class="gpw-about__points">
           {data.points.map((point) => (

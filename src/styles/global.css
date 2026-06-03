@@ -987,6 +987,154 @@ ul { list-style: none; margin: 0; padding: 0; }
   color: var(--gpw-text);
 }
 
+/* ── Before / After Slider ───────────────────────────────────────────────────── */
+.gpw-ba-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 30rem), 1fr));
+  gap: 2rem;
+}
+
+/* 5th item (odd last child in 2-col grid) — center it */
+@media (min-width: 641px) {
+  .gpw-ba-wrap:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 540px;
+    margin-inline: auto;
+    width: 100%;
+  }
+}
+
+.gpw-ba-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.gpw-ba-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--gpw-radius);
+  aspect-ratio: 4 / 3;
+  cursor: col-resize;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+  box-shadow: 0 4px 28px rgba(0,0,0,0.45);
+  /* Green glow on hover */
+  transition: box-shadow 0.25s ease;
+}
+.gpw-ba-slider:hover {
+  box-shadow: 0 6px 36px rgba(0,0,0,0.55), 0 0 0 1px rgba(34,197,94,0.2);
+}
+
+/* Both layers fill the container */
+.gpw-ba-after,
+.gpw-ba-before {
+  position: absolute;
+  inset: 0;
+}
+
+.gpw-ba-after img,
+.gpw-ba-before img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* BEFORE: top layer — clipped to reveal only the left portion */
+.gpw-ba-before {
+  clip-path: inset(0 50% 0 0);  /* default 50% — JS overrides on drag */
+  will-change: clip-path;
+}
+
+/* BEFORE image: slightly darker and desaturated to distinguish it */
+.gpw-ba-before img {
+  filter: brightness(0.80) saturate(0.60);
+}
+
+/* BEFORE / AFTER badge labels */
+.gpw-ba-label {
+  position: absolute;
+  top: 10px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.28rem 0.65rem;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 5;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.gpw-ba-label--before {
+  left: 10px;
+  background: rgba(0,0,0,0.52);
+  color: rgba(255,255,255,0.92);
+}
+.gpw-ba-label--after {
+  right: 10px;
+  background: rgba(34,197,94,0.82);
+  color: #fff;
+}
+
+/* Vertical divider line */
+.gpw-ba-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(255,255,255,0.92);
+  transform: translateX(-50%);
+  will-change: left;
+  z-index: 10;
+  pointer-events: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* Circular drag handle */
+.gpw-ba-handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.40);
+  pointer-events: none;
+  color: var(--gpw-deep);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.gpw-ba-slider:hover .gpw-ba-handle {
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 0 3px rgba(34,197,94,0.35);
+}
+
+/* Caption below each slider */
+.gpw-ba-caption {
+  font-size: 0.8rem;
+  color: var(--gpw-mist);
+  text-align: center;
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .gpw-ba-grid   { grid-template-columns: 1fr; }
+  .gpw-ba-slider { aspect-ratio: 4 / 3; }
+  .gpw-ba-handle { width: 40px; height: 40px; }
+}
+
 /* ── Testimonials ────────────────────────────────────────────────────────────── */
 .gpw-testi-slider { overflow: hidden; position: relative; }
 .gpw-testi-track {

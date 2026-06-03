@@ -1,43 +1,64 @@
 ---
-import galleryData from '../data/gallery.json';
-
-// Show first 12 images on homepage (full list on gallery page)
-const images = galleryData.images.slice(0, 12);
+import gallery from '../data/gallery.json';
 ---
 
 <section class="gpw-gallery" id="gallery" aria-labelledby="gallery-heading">
   <div class="gpw-section-inner">
+
     <div class="gpw-section-header gpw-text-center">
-      <span class="gpw-label">{galleryData.label}</span>
-      <h2 id="gallery-heading" style="margin:0.5rem 0 0.75rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{galleryData.heading}</h2>
-      <p style="color:var(--gpw-mist);max-width:56ch;margin:0 auto;font-size:1rem;line-height:1.65;">{galleryData.subheading}</p>
+      <span class="gpw-label">{gallery.label}</span>
+      <h2 id="gallery-heading" class="gpw-section-heading">{gallery.heading}</h2>
+      <p class="gpw-section-sub">{gallery.subheading}</p>
     </div>
 
-    <div class="gpw-gallery__grid">
-      {images.map((img) => (
-        <figure class={`gpw-gallery-item${img.tall ? ' gpw-gallery-item--tall' : ''}`} aria-label={img.title}>
-          <div class="gpw-gallery-item__img-wrap">
-            <img
-              src={img.src}
-              alt={img.title + ' — Gwaltney\'s Pressure Washing'}
-              class="gpw-gallery-item__img"
-              loading="lazy"
-              decoding="async"
-            />
-            <div class="gpw-gallery-overlay" aria-hidden="true">
-              <span>View</span>
+    <div class="gpw-ba-grid">
+      {gallery.pairs.map((pair, i) => (
+        <div class="gpw-ba-wrap">
+          <div
+            class="gpw-ba-slider"
+            role="img"
+            aria-label={`Before and after: ${pair.caption}`}
+          >
+            <!-- AFTER — bottom layer, always fully visible, full colour -->
+            <div class="gpw-ba-after" aria-hidden="true">
+              <img
+                src={pair.after}
+                alt={`After cleaning: ${pair.caption}`}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+              <span class="gpw-ba-label gpw-ba-label--after">AFTER</span>
+            </div>
+
+            <!-- BEFORE — top layer, clipped right by divider position -->
+            <div class="gpw-ba-before" aria-hidden="true">
+              <img
+                src={pair.before}
+                alt={`Before cleaning: ${pair.caption}`}
+                loading={i < 2 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+              <span class="gpw-ba-label gpw-ba-label--before">BEFORE</span>
+            </div>
+
+            <!-- Draggable divider line + handle -->
+            <div class="gpw-ba-divider" aria-hidden="true">
+              <div class="gpw-ba-handle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 6l-5 6 5 6"/><path d="M15 6l5 6-5 6"/>
+                </svg>
+              </div>
             </div>
           </div>
-          <figcaption class="gpw-gallery-item__meta">
-            <span class="gpw-gallery-item__tag">{img.category}</span>
-            <span class="gpw-gallery-item__title">{img.title}</span>
-          </figcaption>
-        </figure>
+
+          <p class="gpw-ba-caption">{pair.caption}</p>
+        </div>
       ))}
     </div>
 
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="/#contact" class="gpw-btn-ghost">Book Your Cleaning</a>
+    <div class="gpw-text-center" style="margin-top:2.5rem;">
+      <a href="/#contact" class="gpw-btn-primary">Get Your Free Quote</a>
     </div>
+
   </div>
 </section>

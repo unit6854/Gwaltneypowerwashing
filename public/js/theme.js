@@ -275,4 +275,74 @@
     });
   })();
 
+  // ─── Before / After Sliders ──────────────────────────────────────────────
+  (function initBeforeAfterSliders() {
+    var sliders = document.querySelectorAll('.gpw-ba-slider');
+    if (!sliders.length) return;
+
+    sliders.forEach(function(slider) {
+      var beforeEl  = slider.querySelector('.gpw-ba-before');
+      var dividerEl = slider.querySelector('.gpw-ba-divider');
+      if (!beforeEl || !dividerEl) return;
+
+      var pct      = 50;
+      var dragging = false;
+      var rafId    = null;
+
+      function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+      function getPct(clientX) {
+        var rect = slider.getBoundingClientRect();
+        return clamp(((clientX - rect.left) / rect.width) * 100, 0, 100);
+      }
+
+      function apply(p) {
+        beforeEl.style.clipPath = 'inset(0 ' + (100 - p).toFixed(3) + '% 0 0)';
+        dividerEl.style.left    = p.toFixed(3) + '%';
+      }
+
+      function snapTarget(p) {
+        if (p < 40) return 0;
+        if (p > 60) return 100;
+        return 50;
+      }
+
+      function animateTo(target, duration) {
+        var startPct = pct, startTime = null;
+        if (rafId) cancelAnimationFrame(rafId);
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var t     = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - t, 3);
+          pct = startPct + (target - startPct) * eased;
+          apply(pct);
+          if (t < 1) { rafId = requestAnimationFrame(step); }
+          else { pct = target; apply(pct); rafId = null; }
+        }
+        rafId = requestAnimationFrame(step);
+      }
+
+      function onStart(clientX) {
+        dragging = true;
+        if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
+        pct = getPct(clientX); apply(pct);
+      }
+      function onMove(clientX)  { if (dragging) { pct = getPct(clientX); apply(pct); } }
+      function onEnd()           { if (dragging) { dragging = false; animateTo(snapTarget(pct), 250); } }
+
+      // Mouse
+      slider.addEventListener('mousedown', function(e) { e.preventDefault(); onStart(e.clientX); });
+      window.addEventListener('mousemove', function(e) { onMove(e.clientX); });
+      window.addEventListener('mouseup',   onEnd);
+
+      // Touch
+      slider.addEventListener('touchstart',  function(e) { onStart(e.touches[0].clientX); }, { passive: true });
+      slider.addEventListener('touchmove',   function(e) { if (dragging) e.preventDefault(); onMove(e.touches[0].clientX); }, { passive: false });
+      slider.addEventListener('touchend',    onEnd);
+      slider.addEventListener('touchcancel', onEnd);
+
+      apply(pct); // init at 50%
+    });
+  })();
+
 })();
