@@ -1143,7 +1143,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 640px) {
   .gpw-ba-grid   { grid-template-columns: 1fr; }
   .gpw-ba-slider { aspect-ratio: 4 / 3; }
-  .gpw-ba-handle { width: 40px; height: 40px; }
+  /* Bigger handle on mobile — easier to grab */
+  .gpw-ba-handle { width: 52px; height: 52px; }
+  .gpw-ba-divider { width: 3px; }
 }
 
 /* ── Testimonials ────────────────────────────────────────────────────────────── */
@@ -1967,6 +1969,16 @@ ul { list-style: none; margin: 0; padding: 0; }
   .gpw-form-row--2col { grid-template-columns: 1fr; }
 
   .gpw-footer-grid  { grid-template-columns: 1fr; gap: 2rem; }
+  /* Centre every footer column on mobile */
+  .gpw-footer-grid > * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  /* Keep contact items left-aligned inside their centred column */
+  .gpw-footer__contact-item { justify-content: center; }
+  .gpw-footer__list { align-items: center; }
   .gpw-footer__bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 
   .gpw-services,

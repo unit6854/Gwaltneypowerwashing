@@ -330,14 +330,28 @@
       function onMove(clientX)  { if (dragging) { pct = getPct(clientX); apply(pct); } }
       function onEnd()           { if (dragging) { dragging = false; animateTo(snapTarget(pct), 250); } }
 
-      // Mouse
-      slider.addEventListener('mousedown', function(e) { e.preventDefault(); onStart(e.clientX); });
+      var handle = slider.querySelector('.gpw-ba-handle');
+
+      // ── Mouse: only the handle starts a drag ─────────────────────────────
+      handle.addEventListener('mousedown', function(e) { e.preventDefault(); onStart(e.clientX); });
       window.addEventListener('mousemove', function(e) { onMove(e.clientX); });
       window.addEventListener('mouseup',   onEnd);
 
-      // Touch
-      slider.addEventListener('touchstart',  function(e) { onStart(e.touches[0].clientX); }, { passive: true });
-      slider.addEventListener('touchmove',   function(e) { if (dragging) e.preventDefault(); onMove(e.touches[0].clientX); }, { passive: false });
+      // ── Touch: handle starts drag; move/end tracked on slider so the
+      //   finger can travel outside the handle while dragging. Touching
+      //   anywhere else on the image does NOT start a drag, so normal
+      //   page scrolling works fine. ────────────────────────────────────────
+      handle.addEventListener('touchstart', function(e) {
+        onStart(e.touches[0].clientX);
+      }, { passive: true });
+
+      slider.addEventListener('touchmove', function(e) {
+        if (dragging) {
+          e.preventDefault();   // block scroll only while handle is grabbed
+          onMove(e.touches[0].clientX);
+        }
+      }, { passive: false });
+
       slider.addEventListener('touchend',    onEnd);
       slider.addEventListener('touchcancel', onEnd);
 
