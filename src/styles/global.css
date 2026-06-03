@@ -1834,9 +1834,9 @@ ul { list-style: none; margin: 0; padding: 0; }
   .gpw-hero__headline { font-size: clamp(2.2rem, 9vw, 3.5rem); }
   .gpw-hero__content  { padding-left: 1.25rem; padding-right: 1.25rem; }
   .gpw-hero__cursor-hint { display: none; }
-  .gpw-hero__scroll-hint { margin-top: 1rem; order: 5; }
+  .gpw-hero__scroll-hint { margin-top: 0.75rem; order: 5; }
   /* Move badge below CTAs on mobile */
-  .gpw-hero__badge    { order: 4; margin-top: 1.25rem; margin-bottom: 0; }
+  .gpw-hero__badge    { order: 4; margin-top: 0.75rem; margin-bottom: 0; }
   .gpw-hero__ctas     { order: 3; }
   .gpw-hero__sub      { order: 2; }
   .gpw-hero__headline { order: 1; }

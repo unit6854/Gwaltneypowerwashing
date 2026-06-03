@@ -331,7 +331,7 @@
         sweepElapsed += dt;
         if (sweepElapsed > sweepDelay) {
           if (!sweepStarted) { sweepStarted = true; mouseActive = true; }
-          sweepX += sweepDir * 0.308 * dt;  // 40% faster (was 0.22)
+          sweepX += sweepDir * 0.26 * dt;   // ~20% faster than original — smooth without skipping
           if (sweepX >= 0.99 || sweepX <= 0.01) {
             sweepDir *= -1;
             sweepY = sweepY - sweepRowH;
