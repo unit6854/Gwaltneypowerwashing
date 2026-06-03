@@ -1261,7 +1261,14 @@ ul { list-style: none; margin: 0; padding: 0; }
   gap: 4rem;
   align-items: center;
 }
-.gpw-about__visual { position: relative; border-radius: var(--gpw-radius); }
+.gpw-about__visual {
+  position: relative;
+  border-radius: var(--gpw-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;  /* centres the img and badge horizontally */
+  padding-bottom: 2.5rem; /* room for the badge card below */
+}
 .gpw-about__img {
   border-radius: var(--gpw-radius);
   width: 100%;
@@ -1277,7 +1284,10 @@ ul { list-style: none; margin: 0; padding: 0; }
 .gpw-about__badge-card {
   position: absolute;
   bottom: -1.5rem;
-  right: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  right: auto;
+  white-space: nowrap;
   background: var(--gpw-forest);
   border: 1px solid rgba(34,197,94,0.2);
   border-radius: 0.625rem;
@@ -1907,9 +1917,9 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* ── Responsive ─────────────────────────────────────────────────────────────── */
 @media (max-width: 900px) {
-  .gpw-about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .gpw-about__badge-card { display: none; }
-  .gpw-about__img { aspect-ratio: 16/9; }
+  .gpw-about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .gpw-about__badge-card { display: flex; } /* keep badge visible, it's already centred */
+  .gpw-about__img { aspect-ratio: 4/5; max-width: 380px; margin-inline: auto; }
   .gpw-quote-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .gpw-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .gpw-stat-col + .gpw-stat-col { border-left: none; }
