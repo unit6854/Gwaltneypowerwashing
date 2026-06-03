@@ -1833,16 +1833,17 @@ ul { list-style: none; margin: 0; padding: 0; }
 
   .gpw-hero__headline {
     font-size: clamp(2.2rem, 9vw, 3.5rem);
-    line-height: 1.12;      /* was 1.0 — gives breathing between the 3 headline lines */
+    line-height: 1.12;
+    margin-top: 50px;       /* push headline + sub group down 50px */
     margin-bottom: 0;
     order: 1;
   }
   .gpw-hero__sub {
-    margin-top: 1.5rem;     /* was 1.25rem */
+    margin-top: 1.5rem;
     order: 2;
   }
   .gpw-hero__ctas {
-    margin-top: 2rem;       /* was 1.75rem */
+    margin-top: calc(2rem + 35px); /* 2rem natural gap + 35px extra = 85px total shift */
     order: 3;
   }
   .gpw-hero__badge    { order: 4; margin-top: 1.25rem; margin-bottom: 0; }
