@@ -95,10 +95,21 @@ ul { list-style: none; margin: 0; padding: 0; }
   width: auto;
   object-fit: contain;
   display: block;
-  filter: brightness(1.05);
-  transition: filter 0.3s ease, transform 0.3s ease;
+  animation: gpw-logo-pulse 3.5s ease-in-out infinite;
+  transition: transform 0.3s ease;
+}
+@keyframes gpw-logo-pulse {
+  0%, 100% {
+    filter: brightness(1.05) drop-shadow(0 0 4px rgba(255,255,255,0.30));
+  }
+  50% {
+    filter: brightness(1.18)
+      drop-shadow(0 0 10px rgba(255,255,255,0.65))
+      drop-shadow(0 0 22px rgba(255,255,255,0.22));
+  }
 }
 .gpw-header__brand a:hover .gpw-logo {
+  animation: none;   /* pause pulse on hover, switch to green glow */
   transform: scale(1.03);
   filter: brightness(1.1)
     drop-shadow(0 0 8px rgba(34,197,94,0.7))
@@ -1274,6 +1285,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   width: 100%;
   aspect-ratio: 4/5;
   object-fit: cover;
+  object-position: 62% center;   /* shift right to centre the circular logo sign */
   background: linear-gradient(135deg, #0d2010, #091508);
   background-image:
     linear-gradient(rgba(34,197,94,0.06) 1px, transparent 1px),
