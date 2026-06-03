@@ -26,16 +26,12 @@
       console.error('[GPW] Canvas not found'); return;
     }
 
-    // ── Dimensions ────────────────────────────────────────────────────────
-    var W   = window.innerWidth;
-    var H   = window.innerHeight;
+    // ── Dimensions — use hero container, not full viewport ───────────────
+    var W   = container.offsetWidth  || window.innerWidth;
+    var H   = container.offsetHeight || window.innerHeight;
     var DPR = Math.min(window.devicePixelRatio || 1, 2);
     var isMobile = W < 768;
-
-    var fixed = { position:'fixed', top:'0', left:'0',
-                  width:'100vw', height:'100vh', zIndex:'0', pointerEvents:'none' };
-    Object.assign(canvas.style,    fixed);
-    Object.assign(container.style, fixed);
+    // CSS handles positioning (position:absolute within .gpw-hero)
 
     // ── Renderer ──────────────────────────────────────────────────────────
     var renderer;
@@ -85,16 +81,7 @@
       }
     }
 
-    // ── Scroll: hide canvas when hero is out of view ──────────────────────
-    var heroEl = document.querySelector('.gpw-hero');
-    function onScroll() {
-      if (!heroEl) return;
-      var bottom = heroEl.getBoundingClientRect().bottom;
-      var vis = bottom > 0 ? '1' : '0';
-      canvas.style.opacity    = vis;
-      container.style.opacity = vis;
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
+    // Canvas scrolls naturally with the hero section — no scroll handler needed
 
     // ── Trail shader ──────────────────────────────────────────────────────
     var R = 0.047;
@@ -271,15 +258,25 @@
     }
 
     window.addEventListener('mousemove', function(e) {
-      targetMouse.set(e.clientX / W, 1.0 - e.clientY / H);
-      setActive();
-      hideCursorHint();
+      // Coords relative to the canvas element so they work while scrolling
+      var rect = canvas.getBoundingClientRect();
+      var relX = (e.clientX - rect.left) / rect.width;
+      var relY = (e.clientY - rect.top)  / rect.height;
+      targetMouse.set(relX, 1.0 - relY);
+      if (relX > -0.1 && relX < 1.1 && relY > -0.1 && relY < 1.1) {
+        setActive();
+        hideCursorHint();
+      }
     }, { passive: true });
 
     if (!isMobile) {
       window.addEventListener('touchmove', function(e) {
         var t = e.touches[0];
-        targetMouse.set(t.clientX / W, 1.0 - t.clientY / H);
+        var rect = canvas.getBoundingClientRect();
+        targetMouse.set(
+          (t.clientX - rect.left) / rect.width,
+          1.0 - (t.clientY - rect.top) / rect.height
+        );
         setActive();
         hideCursorHint();
       }, { passive: true });
@@ -306,7 +303,8 @@
 
     // ── Resize ────────────────────────────────────────────────────────────
     window.addEventListener('resize', function(){
-      W = window.innerWidth; H = window.innerHeight;
+      W = container.offsetWidth  || window.innerWidth;
+      H = container.offsetHeight || window.innerHeight;
       DPR = Math.min(window.devicePixelRatio || 1, 2);
       isMobile = W < 768;
       renderer.setSize(W, H);
@@ -316,7 +314,6 @@
       surfaceUniforms.uResolution.value.set(W, H);
       rtA.dispose(); rtB.dispose();
       rtA = makeRT(); rtB = makeRT();
-      onScroll();
     }, { passive: true });
 
     // ── Render loop ───────────────────────────────────────────────────────

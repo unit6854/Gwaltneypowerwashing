@@ -7,16 +7,16 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 :root {
-  --gpw-ink:         #060f06;
-  --gpw-forest:      #0a1a0a;
-  --gpw-dark:        #112211;
-  --gpw-deep:        #1a3d1a;
-  --gpw-mid:         #1e5225;
+  --gpw-ink:         #0f1f0f;   /* was #060f06 — noticeably lighter */
+  --gpw-forest:      #162816;   /* was #0a1a0a */
+  --gpw-dark:        #1e3a1e;   /* was #112211 */
+  --gpw-deep:        #264e26;   /* was #1a3d1a */
+  --gpw-mid:         #2e6830;   /* was #1e5225 */
   --gpw-green:       #22c55e;
   --gpw-green-light: #4ade80;
-  --gpw-slate:       #4a6a4a;
-  --gpw-mist:        #8aaa8a;
-  --gpw-text:        #e8f4e8;
+  --gpw-slate:       #5a7a5a;   /* was #4a6a4a — lighter muted text */
+  --gpw-mist:        #9dbf9d;   /* was #8aaa8a — brighter secondary text */
+  --gpw-text:        #f0f8f0;   /* was #e8f4e8 — brighter body text */
   --gpw-white:       #ffffff;
   --gpw-header-h:    88px;
   --gpw-radius:      0.75rem;
@@ -323,7 +323,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   z-index: 1;
 }
 
-/* Dark gradient overlay for text legibility — covers left half of hero */
+/* Dark gradient overlay for text legibility — lightened significantly */
 .gpw-hero__overlay {
   position: absolute;
   inset: 0;
@@ -331,10 +331,10 @@ ul { list-style: none; margin: 0; padding: 0; }
   pointer-events: none;
   background: linear-gradient(
     108deg,
-    rgba(2,8,2,.85) 0%,
-    rgba(2,8,2,.70) 30%,
-    rgba(2,8,2,.30) 60%,
-    rgba(2,8,2,.05) 100%
+    rgba(2,8,2,.62) 0%,
+    rgba(2,8,2,.38) 35%,
+    rgba(2,8,2,.10) 62%,
+    transparent 100%
   );
 }
 
@@ -632,7 +632,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .gpw-gallery,
 .gpw-about,
 .gpw-footer {
-  background-image: radial-gradient(rgba(34,197,94,0.07) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(34,197,94,0.11) 1px, transparent 1px);
   background-size: 28px 28px;
 }
 
@@ -667,8 +667,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 
 .gpw-service-card {
-  background: var(--gpw-forest);
-  border: 1px solid rgba(34,197,94,0.1);
+  background: var(--gpw-dark);       /* was --gpw-forest — one step lighter */
+  border: 1px solid rgba(34,197,94,0.12);
   border-radius: var(--gpw-radius);
   padding: 2rem 1.75rem;
   transition: transform 0.22s cubic-bezier(0.4,0,0.2,1),
@@ -718,7 +718,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* Featured card */
 .gpw-service-card--featured {
-  background: linear-gradient(135deg, #0d2010 0%, #091808 100%);
+  background: linear-gradient(135deg, #172a17 0%, #122012 100%);
   border-color: rgba(34,197,94,0.3);
 }
 .gpw-service-card--featured::before {
@@ -847,7 +847,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 }
 .gpw-stat-sub {
   font-size: 0.75rem;
-  color: var(--gpw-slate);
+  color: var(--gpw-mist);   /* was slate — brighter */
   margin-top: 0.25rem;
 }
 
@@ -900,7 +900,7 @@ ul { list-style: none; margin: 0; padding: 0; }
   position: relative;
   border-radius: var(--gpw-radius);
   overflow: hidden;
-  background: var(--gpw-forest);
+  background: var(--gpw-dark);
   transition: box-shadow 0.22s ease;
   cursor: pointer;
 }
@@ -996,7 +996,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 .gpw-testi-slide { flex: 0 0 100%; padding: 0.25rem; }
 
 .gpw-testi-card {
-  background: linear-gradient(135deg, #0f2210 0%, #091508 100%);
+  background: linear-gradient(135deg, #192d1a 0%, #132315 100%);
   border: 1px solid rgba(34,197,94,0.1);
   border-left: 3px solid var(--gpw-green);
   border-radius: 0 var(--gpw-radius) var(--gpw-radius) var(--gpw-radius);
@@ -1172,8 +1172,8 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* ── Compliance Section ─────────────────────────────────────────────────────── */
 .gpw-compliance {
-  background: var(--gpw-forest);
-  border-top: 1px solid rgba(34,197,94,0.08);
+  background: var(--gpw-dark);   /* one step lighter */
+  border-top: 1px solid rgba(34,197,94,0.10);
 }
 .gpw-compliance-grid {
   display: grid;
@@ -1265,7 +1265,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 
 /* Form */
 .gpw-quote-form {
-  background: linear-gradient(160deg, #0d2510 0%, #0a1a0a 60%);
+  background: linear-gradient(160deg, #182e18 0%, #152515 60%);
   border: 1px solid rgba(34,197,94,0.1);
   border-top: 2px solid rgba(34,197,94,0.35);
   border-radius: var(--gpw-radius);
