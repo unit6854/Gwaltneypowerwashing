@@ -1834,7 +1834,6 @@ ul { list-style: none; margin: 0; padding: 0; }
   .gpw-hero__headline {
     font-size: clamp(2.2rem, 9vw, 3.5rem);
     line-height: 1.12;
-    margin-top: 50px;       /* push headline + sub group down 50px */
     margin-bottom: 0;
     order: 1;
   }
@@ -1843,7 +1842,7 @@ ul { list-style: none; margin: 0; padding: 0; }
     order: 2;
   }
   .gpw-hero__ctas {
-    margin-top: calc(2rem + 35px); /* 2rem natural gap + 35px extra = 85px total shift */
+    margin-top: 2rem;
     order: 3;
   }
   .gpw-hero__badge    { order: 4; margin-top: 1.25rem; margin-bottom: 0; }
