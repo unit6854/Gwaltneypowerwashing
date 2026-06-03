@@ -1940,7 +1940,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 @media (max-width: 900px) {
   .gpw-about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .gpw-about__badge-card { display: flex; } /* keep badge visible, it's already centred */
-  .gpw-about__img { aspect-ratio: 4/5; max-width: 380px; margin-inline: auto; }
+  .gpw-about__img { aspect-ratio: 4/5; max-width: 380px; margin-inline: auto; object-position: 78% center; }
   .gpw-quote-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .gpw-stats-grid { grid-template-columns: repeat(2, 1fr); }
   .gpw-stat-col + .gpw-stat-col { border-left: none; }
