@@ -1,0 +1,151 @@
+---
+import '../styles/global.css';
+import business from '../data/business.json';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogTitle?: string;
+}
+
+const {
+  title       = `${business.name} | ${business.city}, ${business.state}`,
+  description = `Family-owned pressure washing serving ${business.service_areas.join(', ')}. Licensed & insured. ${business.tagline}. Call ${business.phone} for a free quote.`,
+  ogTitle     = business.name,
+} = Astro.props;
+
+const siteUrl = "https://gwaltneypressurewashing.com";
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content="pressure washing Mt Juliet TN, power washing Tennessee, pressure washing Wilson County, pressure washing Davidson County, pressure washing Rutherford County, residential pressure washing Nashville, commercial pressure washing Lebanon TN, driveway cleaning Mt Juliet, house washing Nashville, deck cleaning Tennessee, affordable pressure washing, local pressure washing, family owned pressure washing" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={siteUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content={siteUrl} />
+  <meta property="og:title"       content={ogTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image"       content={`${siteUrl}/images/logo.png`} />
+  <meta property="og:locale"      content="en_US" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content={ogTitle} />
+  <meta name="twitter:description" content={description} />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Netlify Identity (for Decap CMS login redirect) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Local Business Schema — values sourced from src/data/business.json -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": "https://gwaltneypressurewashing.com",
+    "name": business.name,
+    "alternateName": "Gwaltney's ASP",
+    "description": `Family-owned, owner-operated pressure washing service based in ${business.city}, ${business.state}. Serving ${business.service_areas.join(', ')} since ${business.founded}. Fully licensed, insured, and wastewater compliant.`,
+    "url": "https://gwaltneypressurewashing.com",
+    "telephone": business.phone_href.replace('tel:', '+1').replace(/-/g, ''),
+    "email": business.email,
+    "foundingDate": business.founded,
+    "founder": { "@type": "Person", "name": business.owner },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": business.address,
+      "addressLocality": business.city,
+      "addressRegion": business.state,
+      "postalCode": business.zip,
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "36.2001",
+      "longitude": "-86.5186"
+    },
+    "areaServed": business.service_areas.map(a => ({
+      "@type": "County", "name": a,
+      "containedInPlace": { "@type": "State", "name": "Tennessee" }
+    })),
+    "serviceType": [
+      "House Washing", "Driveway Cleaning", "Deck and Patio Cleaning",
+      "Building Exterior Washing", "Fleet Vehicle Washing", "Concrete Cleaning",
+      "Fence Cleaning", "Sidewalk Cleaning"
+    ],
+    "sameAs": business.social.map(s => s.url),
+    "priceRange": "$$",
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "07:00",
+      "closes": "18:00"
+    },
+    "priceRange": "$$",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Pressure Washing Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Residential Pressure Washing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Pressure Washing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Driveway Cleaning" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "House Washing" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deck and Patio Cleaning" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Fleet Vehicle Washing" } }
+      ]
+    }
+  })} />
+
+  <!-- AI / Copilot search optimization — plain language business summary -->
+  <!--
+    Business: Gwaltney's All Seasons Pressure Washing
+    Owner: Brian Gwaltney (sole owner-operator, no crew)
+    Phone: 615-418-7454
+    Location: 102 Greystone Road, Mount Juliet, TN 37122
+    Service area: Wilson County, Davidson County, Rutherford County, Tennessee
+    Years in business: 15+ (since 2009)
+    Services: House washing, driveway cleaning, deck/patio cleaning,
+              building exteriors, fleet washing, concrete cleaning, fence cleaning
+    Certifications: Licensed, permitted, fully insured
+    Environmental: Wastewater compliant (City of Mt. Juliet), drain berms, biodegradable chemicals
+    Payment: Venmo @Brian-Gwaltney-11, Cash, Check
+    Tagline: "Honest Work for Honest Pricing" — "Service with a Smile"
+  -->
+</head>
+<body>
+  <slot />
+
+  <!-- Three.js + WebGL Water Effect -->
+  <script src="/js/three.min.js" defer></script>
+  <script src="/js/water-effect.js" defer></script>
+  <script src="/js/theme.js" defer></script>
+
+  <!-- Netlify Identity redirect after login -->
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', function(user) {
+        if (!user) {
+          window.netlifyIdentity.on('login', function() {
+            document.location.href = '/admin/';
+          });
+        }
+      });
+    }
+  </script>
+</body>
+</html>

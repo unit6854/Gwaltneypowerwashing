@@ -1,0 +1,20 @@
+{
+  "label": "Get In Touch",
+  "heading": "Ready for a Free Quote?",
+  "intro": "Call or text anytime — or fill out the form and Brian will get back to you within 24 hours. No pressure, no obligation, just honest answers.",
+  "tip": "Calling is the fastest way to get a same-week appointment.",
+  "form_heading": "Request a Free Quote",
+  "form_note": "Brian responds within 24 hours. No spam, no sales calls.",
+  "success_message": "Message sent! Brian will be in touch within 24 hours.",
+  "error_message": "Submission failed. Please call us directly.",
+  "service_options": [
+    "House Washing",
+    "Driveway & Sidewalk",
+    "Deck, Patio & Fence",
+    "Building Exterior / Commercial",
+    "Fleet & Equipment",
+    "Concrete & Parking Lot",
+    "Multiple Services",
+    "Other / Not Sure"
+  ]
+}

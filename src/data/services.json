@@ -1,0 +1,49 @@
+{
+  "label": "What We Do",
+  "heading": "Professional Pressure Washing Services",
+  "description": "Reliable, thorough cleaning for residential and commercial properties across Wilson, Davidson, and Rutherford Counties. No roof washing or graffiti removal — we focus on what we do best.",
+  "items": [
+    {
+      "id": "house-washing",
+      "icon": "house",
+      "title": "House Washing",
+      "description": "Safe, low-pressure soft-wash technique that removes mold, mildew, algae, and grime from your home's siding, trim, and exterior surfaces — without damage.",
+      "featured": false
+    },
+    {
+      "id": "driveways",
+      "icon": "road",
+      "title": "Driveways & Sidewalks",
+      "description": "Remove years of oil stains, tire marks, mold, and embedded grime from concrete and asphalt driveways, sidewalks, and walkways.",
+      "featured": false
+    },
+    {
+      "id": "decks-patios",
+      "icon": "outdoor",
+      "title": "Decks, Patios & Fences",
+      "description": "Restore your outdoor living spaces. We safely remove mold, mildew, algae, and weathered grime from wood, composite, vinyl, and stone surfaces.",
+      "featured": false
+    },
+    {
+      "id": "commercial",
+      "icon": "building",
+      "title": "Building Exteriors",
+      "description": "Keep your commercial property looking sharp and professional. First impressions matter — let us help you maintain a clean, welcoming exterior that reflects your business.",
+      "featured": true
+    },
+    {
+      "id": "fleet",
+      "icon": "truck",
+      "title": "Fleet & Equipment",
+      "description": "From single vehicles to entire fleets, we keep your trucks, trailers, and equipment clean, road-ready, and representing your brand professionally.",
+      "featured": false
+    },
+    {
+      "id": "concrete",
+      "icon": "concrete",
+      "title": "Concrete & Parking Lots",
+      "description": "Surface cleaning for commercial concrete, parking lots, loading docks, drive-throughs, and industrial flooring. Improve safety and curb appeal.",
+      "featured": false
+    }
+  ]
+}

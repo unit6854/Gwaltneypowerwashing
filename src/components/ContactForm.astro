@@ -1,0 +1,146 @@
+---
+import business from '../data/business.json';
+import contact  from '../data/contact.json';
+
+const phoneIcon    = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>`;
+const emailIcon    = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`;
+const locationIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>`;
+const payIcon      = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>`;
+const checkIcon    = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+---
+
+<section class="gpw-quote" id="contact" aria-labelledby="contact-heading">
+  <div class="gpw-section-inner">
+    <div class="gpw-quote-grid">
+
+      <!-- Left: contact info — all from JSON -->
+      <div>
+        <span class="gpw-label">{contact.label}</span>
+        <h2 id="contact-heading" style="margin:0.5rem 0 1rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{contact.heading}</h2>
+        <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.65;margin:0 0 0.5rem;">{contact.intro}</p>
+        <p style="color:var(--gpw-mist);font-size:0.875rem;margin:0 0 2rem;"><strong style="color:var(--gpw-white);">Tip:</strong> {contact.tip}</p>
+
+        <div class="gpw-quote__contact">
+          <div class="gpw-quote__contact-item">
+            <div class="gpw-quote__contact-icon" set:html={phoneIcon}></div>
+            <div>
+              <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gpw-slate);margin-bottom:0.1rem;">Phone / Text</div>
+              <a href={business.phone_href} style="font-size:1.05rem;font-weight:700;">{business.phone}</a>
+            </div>
+          </div>
+
+          <div class="gpw-quote__contact-item">
+            <div class="gpw-quote__contact-icon" set:html={emailIcon}></div>
+            <div>
+              <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gpw-slate);margin-bottom:0.1rem;">Email</div>
+              <a href={`mailto:${business.email}`}>{business.email}</a>
+            </div>
+          </div>
+
+          <div class="gpw-quote__contact-item">
+            <div class="gpw-quote__contact-icon" set:html={locationIcon}></div>
+            <div>
+              <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gpw-slate);margin-bottom:0.1rem;">Based In</div>
+              <span style="color:var(--gpw-text);">{business.address_full}</span>
+            </div>
+          </div>
+
+          <div class="gpw-quote__contact-item">
+            <div class="gpw-quote__contact-icon" set:html={payIcon}></div>
+            <div>
+              <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gpw-slate);margin-bottom:0.1rem;">We Accept</div>
+              <span style="color:var(--gpw-text);">
+                {business.payment_methods.map((p, i) => (
+                  <>{p.method}{p.detail ? ` (${p.detail})` : ''}{i < business.payment_methods.length - 1 ? ' · ' : ''}</>
+                ))}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem;padding:1.25rem;background:rgba(34,197,94,0.05);border:1px solid rgba(34,197,94,0.15);border-radius:var(--gpw-radius);">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gpw-green);font-weight:700;margin-bottom:0.4rem;">Serving</div>
+          <p style="color:var(--gpw-mist);font-size:0.875rem;margin:0;line-height:1.6;">
+            {business.service_areas.join(' · ')}<br/>{business.service_cities}
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: form — service options from JSON -->
+      <div>
+        <form
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          netlify-honeypot="bot-field"
+          id="gpwQuoteForm"
+          class="gpw-quote-form"
+          novalidate
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden><label>Don't fill this out: <input name="bot-field" /></label></p>
+
+          <h3 style="margin:0 0 1.5rem;font-size:1.1rem;font-weight:700;color:var(--gpw-white);">{contact.form_heading}</h3>
+
+          <div class="gpw-form-row--2col">
+            <div class="gpw-form-group">
+              <label for="name">Full Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name" />
+            </div>
+            <div class="gpw-form-group">
+              <label for="phone">Phone Number</label>
+              <input type="tel" id="phone" name="phone" placeholder={`(${business.phone.split('-')[0]}) 000-0000`} autocomplete="tel" />
+            </div>
+          </div>
+
+          <div class="gpw-form-group">
+            <label for="email">Email Address <span aria-hidden="true">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required autocomplete="email" />
+          </div>
+
+          <div class="gpw-form-group">
+            <label for="service">Service Needed</label>
+            <select id="service" name="service">
+              <option value="">Select a service...</option>
+              {contact.service_options.map((opt) => (
+                <option value={opt.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>{opt}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="gpw-form-group">
+            <label for="address">Property Address</label>
+            <input type="text" id="address" name="address" placeholder="Street address or city" autocomplete="street-address" />
+          </div>
+
+          <div class="gpw-form-group">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" rows="4" placeholder="Describe what needs cleaned — size, condition, any specific concerns..."></textarea>
+          </div>
+
+          <div class="gpw-form-footer">
+            <button type="submit" class="gpw-form-submit" aria-label="Send quote request">
+              <span class="gpw-form-submit__text">
+                <span set:html={checkIcon}></span>
+                Send My Free Quote Request
+              </span>
+              <span class="gpw-form-submit__loading" aria-label="Sending...">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+              </span>
+            </button>
+            <p class="gpw-form-note">{contact.form_note}</p>
+          </div>
+
+          <div class="gpw-form-success" id="gpwFormSuccess" hidden role="alert" aria-live="polite">
+            <span set:html={checkIcon}></span>
+            <span>{contact.success_message}</span>
+          </div>
+          <div class="gpw-form-error" id="gpwFormError" hidden role="alert" aria-live="polite">
+            <span>{contact.error_message} <a href={business.phone_href} style="color:inherit;font-weight:700;">{business.phone}</a></span>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>

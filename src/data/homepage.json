@@ -1,0 +1,46 @@
+{
+  "hero": {
+    "badge": "Now Serving Wilson, Davidson & Rutherford Counties",
+    "headline": "Professional",
+    "headline_accent": "Pressure.",
+    "headline_end": "Washing.",
+    "subheadline": "15+ years of honest work at honest prices. Mount Juliet's trusted, family-owned pressure washing service — one owner, one standard of excellence.",
+    "cta_call": "Call 615-418-7454",
+    "cta_quote": "Get Free Quote"
+  },
+  "trust_items": [
+    { "icon": "shield",   "text": "Licensed & Permitted"      },
+    { "icon": "star",     "text": "15+ Years Experience"       },
+    { "icon": "map-pin",  "text": "Mt. Juliet Based"           },
+    { "icon": "heart",    "text": "Family Owned & Operated"    },
+    { "icon": "check",    "text": "100% Satisfaction Guaranteed" }
+  ],
+  "stats": [
+    { "number": 15,  "suffix": "+", "label": "Years Experience",   "sublabel": "Serving Wilson County since 2009"   },
+    { "number": 3,   "suffix": "",  "label": "Counties Served",    "sublabel": "Wilson, Davidson & Rutherford"      },
+    { "number": 500, "suffix": "+", "label": "Happy Customers",    "sublabel": "And growing every season"           },
+    { "number": 100, "suffix": "%", "label": "Satisfaction Rate",  "sublabel": "We don't stop until you're happy"  }
+  ],
+  "about": {
+    "label": "About Brian",
+    "heading": "One Owner. One Standard. 15+ Years.",
+    "body": "My name is Brian Gwaltney, and I've been pressure washing homes and businesses across Wilson County since 2009. When you hire Gwaltney's All Seasons Pressure Washing, you get me — not a crew, not a subcontractor. Just one owner who takes personal pride in every single job.",
+    "body2": "I built this business on three words: honest work, honest pricing. No hidden fees. No upsells. No surprises. Just clean results and a smile when I hand you the invoice. That's my promise — and I stand behind it on every job.",
+    "badge_title": "Owner & Operator",
+    "badge_sub": "Brian Gwaltney",
+    "points": [
+      {
+        "heading": "Locally Owned & Operated",
+        "text": "Based right here in Mt. Juliet, TN — I live in the same community I serve and I take that seriously."
+      },
+      {
+        "heading": "Wastewater Compliant",
+        "text": "I use drain berms and biodegradable chemicals in full compliance with City of Mt. Juliet wastewater regulations."
+      },
+      {
+        "heading": "Fully Licensed & Insured",
+        "text": "Licensed, permitted, and fully insured for your complete peace of mind on every job."
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Astro build output — Netlify builds this, don't commit it
+dist/
+.astro/
+
+# Source images folder — root-anchored so it doesn't match public/images/
+/Images/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.log
+.vscode/

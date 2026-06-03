@@ -1,0 +1,69 @@
+{
+  "name": "Gwaltney's All Seasons Pressure Washing",
+  "tagline": "Honest Work for Honest Pricing",
+  "tagline2": "Service with a Smile",
+  "owner": "Brian Gwaltney",
+  "phone": "615-418-7454",
+  "phone_href": "tel:6154187454",
+  "email": "Gwaltneysasp@gmail.com",
+  "address": "102 Greystone Road",
+  "city": "Mount Juliet",
+  "state": "TN",
+  "zip": "37122",
+  "address_full": "102 Greystone Road, Mount Juliet, TN 37122",
+  "years_experience": "15+",
+  "founded": "2009",
+  "service_areas": [
+    "Wilson County",
+    "Davidson County",
+    "Rutherford County"
+  ],
+  "service_cities": "Mt. Juliet · Lebanon · Murfreesboro · Nashville · Hermitage · Smyrna",
+  "hours": "Mon–Sat, 7am–6pm",
+  "payment_methods": [
+    { "method": "Venmo", "detail": "@Brian-Gwaltney-11" },
+    { "method": "Cash",  "detail": "" },
+    { "method": "Check", "detail": "Made out to Gwaltney's ASP" }
+  ],
+  "social": [
+    {
+      "platform": "Facebook",
+      "url": "http://facebook.com/share/18cSHRbf2D/",
+      "aria": "Follow us on Facebook"
+    },
+    {
+      "platform": "Yelp",
+      "url": "https://www.yelp.com/biz/gwaltneys-all-seasons-pressure-washing-mt-juliet",
+      "aria": "Read our Yelp reviews"
+    },
+    {
+      "platform": "Google",
+      "url": "https://share.google/GJwld84thFhemIpy7",
+      "aria": "See us on Google"
+    }
+  ],
+  "nav_links": [
+    { "href": "/#services",     "label": "Services"  },
+    { "href": "/#gallery",      "label": "Our Work"  },
+    { "href": "/#testimonials", "label": "Reviews"   },
+    { "href": "/#about",        "label": "About"     },
+    { "href": "/pricing",       "label": "Pricing"   },
+    { "href": "/faq",           "label": "FAQ"       }
+  ],
+  "footer_services": [
+    { "label": "House Washing",           "href": "/#services" },
+    { "label": "Driveways & Sidewalks",   "href": "/#services" },
+    { "label": "Decks, Patios & Fences",  "href": "/#services" },
+    { "label": "Building Exteriors",      "href": "/#services" },
+    { "label": "Fleet & Equipment",       "href": "/#services" },
+    { "label": "Concrete & Parking Lots", "href": "/#services" }
+  ],
+  "footer_company": [
+    { "label": "About Brian",  "href": "/#about"        },
+    { "label": "Our Work",     "href": "/#gallery"      },
+    { "label": "Reviews",      "href": "/#testimonials" },
+    { "label": "Pricing",      "href": "/pricing"       },
+    { "label": "FAQ",          "href": "/faq"           },
+    { "label": "Get a Quote",  "href": "/#contact"      }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "label": "Our Work",
+  "heading": "Before & After Gallery",
+  "subheading": "Real results from real jobs across Wilson, Davidson, and Rutherford Counties.",
+  "images": [
+    { "src": "/images/gallery/Resized_1000004232.jpeg", "title": "Driveway Cleaning",       "category": "Driveways",        "tall": false },
+    { "src": "/images/gallery/Resized_1000004368.jpeg", "title": "House Washing",            "category": "House Washing",    "tall": true  },
+    { "src": "/images/gallery/Resized_1000004375.jpeg", "title": "Concrete Cleaning",        "category": "Concrete",         "tall": false },
+    { "src": "/images/gallery/Resized_1000004659.jpeg", "title": "Deck & Patio Restoration", "category": "Decks & Patios",   "tall": false },
+    { "src": "/images/gallery/Resized_1000004742.jpeg", "title": "Driveway Deep Clean",      "category": "Driveways",        "tall": false },
+    { "src": "/images/gallery/Resized_1000004743.jpeg", "title": "Commercial Exterior",      "category": "Commercial",       "tall": false },
+    { "src": "/images/gallery/Resized_1000004797.jpeg", "title": "Sidewalk & Walkway",       "category": "Driveways",        "tall": false },
+    { "src": "/images/gallery/Resized_1000004800.jpeg", "title": "House Soft Wash",          "category": "House Washing",    "tall": false },
+    { "src": "/images/gallery/Resized_1000005041.jpeg", "title": "Patio & Steps",            "category": "Decks & Patios",   "tall": false },
+    { "src": "/images/gallery/Resized_1000005046.jpeg", "title": "Fence Cleaning",           "category": "Decks & Patios",   "tall": false },
+    { "src": "/images/gallery/Resized_1000005050.jpeg", "title": "Parking Lot Cleaning",     "category": "Commercial",       "tall": false },
+    { "src": "/images/gallery/Resized_1000005052.jpeg", "title": "Building Exterior",        "category": "Commercial",       "tall": false },
+    { "src": "/images/gallery/Resized_1000005053.jpeg", "title": "Concrete Restoration",     "category": "Concrete",         "tall": false },
+    { "src": "/images/gallery/Resized_1000005222.jpeg", "title": "Residential Driveway",     "category": "Driveways",        "tall": false },
+    { "src": "/images/gallery/Resized_1000005223.jpeg", "title": "Fleet Vehicle Wash",       "category": "Fleet",            "tall": false },
+    { "src": "/images/gallery/Resized_1000005224.jpeg", "title": "House Exterior Wash",      "category": "House Washing",    "tall": false },
+    { "src": "/images/gallery/Resized_1000005303.jpeg", "title": "Deck Revitalization",      "category": "Decks & Patios",   "tall": false },
+    { "src": "/images/gallery/1000004294.jpg",          "title": "Power Washing in Action",  "category": "Commercial",       "tall": false }
+  ]
+}

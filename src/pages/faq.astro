@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import faq from '../data/faq.json';
+---
+
+<Layout
+  title="FAQ — Gwaltney's All Seasons Pressure Washing | Mt. Juliet, TN"
+  description="Frequently asked questions about Gwaltney's pressure washing services — licensing, wastewater compliance, service areas, chemicals, pricing, and more. Call 615-418-7454."
+>
+  <Header />
+
+  <main>
+    <!-- FAQ Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faq.items.map(item => ({
+        "@type": "Question",
+        "name": item.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": item.answer
+        }
+      }))
+    })} />
+
+    <!-- Page Hero -->
+    <div class="gpw-page-hero">
+      <span class="gpw-label">{faq.label}</span>
+      <h1>{faq.heading}</h1>
+      <p>{faq.subheading}</p>
+    </div>
+
+    <!-- FAQ Accordion -->
+    <div class="gpw-pricing-section">
+      <div class="gpw-section-inner" style="max-width:56rem;">
+        <div class="gpw-faq-list" role="list">
+          {faq.items.map((item, i) => (
+            <div class="gpw-faq-item" role="listitem">
+              <button
+                class="gpw-faq-question"
+                aria-expanded="false"
+                aria-controls={`faq-answer-${i}`}
+                id={`faq-question-${i}`}
+              >
+                <span>{item.question}</span>
+                <span class="gpw-faq-icon" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="gpw-faq-answer"
+                id={`faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`faq-question-${i}`}
+              >
+                <p>{item.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Bottom CTA -->
+        <div style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg,#0d2010,#091808);border:1px solid rgba(34,197,94,0.2);border-radius:var(--gpw-radius);text-align:center;">
+          <h2 style="font-size:1.4rem;font-weight:800;color:var(--gpw-white);margin:0 0 0.5rem;">Still Have Questions?</h2>
+          <p style="color:var(--gpw-mist);margin:0 0 1.5rem;font-size:0.95rem;">Call or text Brian directly — he's always happy to answer before you commit to anything.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="tel:6154187454" class="gpw-btn-primary">Call 615-418-7454</a>
+            <a href="/#contact" class="gpw-btn-outline">Send a Message</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

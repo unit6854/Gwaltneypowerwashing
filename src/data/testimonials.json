@@ -1,0 +1,28 @@
+{
+  "label": "Customer Reviews",
+  "heading": "What Our Customers Say",
+  "subheading": "Honest reviews from real customers across Wilson, Davidson, and Rutherford Counties.",
+  "items": [
+    {
+      "quote": "Brian did an amazing job on our driveway and back patio. He showed up on time, communicated the whole way through, and the results were incredible. Honest pricing — no surprises on the bill. Best pressure washing service in Wilson County!",
+      "name": "Sarah M.",
+      "location": "Mt. Juliet, TN",
+      "initials": "SM",
+      "rating": 5
+    },
+    {
+      "quote": "We hired Gwaltney's to clean our building exterior. Brian showed up exactly when he said he would, did outstanding work, and left everything spotless. Our storefront looks brand new. We'll be scheduling him every year without question.",
+      "name": "Tom K.",
+      "location": "Lebanon, TN",
+      "initials": "TK",
+      "rating": 5
+    },
+    {
+      "quote": "Had Brian wash our house and deck before we listed the property. Night and day difference. He was careful around our landscaping, professional the whole way through, and the results speak for themselves. Highly recommend to anyone in the Nashville area.",
+      "name": "Jennifer R.",
+      "location": "Hermitage, TN",
+      "initials": "JR",
+      "rating": 5
+    }
+  ]
+}

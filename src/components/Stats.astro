@@ -1,0 +1,26 @@
+---
+interface Stat {
+  number: number;
+  suffix: string;
+  label: string;
+  sublabel: string;
+}
+interface Props { stats: Stat[]; }
+const { stats } = Astro.props;
+---
+
+<section class="gpw-stats" aria-label="Our numbers">
+  <div class="gpw-stats-grid gpw-section-inner">
+    {stats.map((s) => (
+      <div class="gpw-stat-col">
+        <div
+          class="gpw-stat-number"
+          data-count={s.number}
+          aria-label={`${s.number}${s.suffix} ${s.label}`}
+        >{s.number}{s.suffix}</div>
+        <div class="gpw-stat-label">{s.label}</div>
+        <div class="gpw-stat-sub">{s.sublabel}</div>
+      </div>
+    ))}
+  </div>
+</section>

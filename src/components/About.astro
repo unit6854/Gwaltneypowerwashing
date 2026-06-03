@@ -1,0 +1,63 @@
+---
+interface Props {
+  data: {
+    label: string;
+    heading: string;
+    body: string;
+    body2: string;
+    badge_title: string;
+    badge_sub: string;
+    points: { heading: string; text: string }[];
+  };
+}
+const { data } = Astro.props;
+
+const checkIcon = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>`;
+const ownerIcon = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+---
+
+<section class="gpw-about" id="about" aria-labelledby="about-heading">
+  <div class="gpw-section-inner">
+    <div class="gpw-about-grid">
+
+      <!-- Visual -->
+      <div class="gpw-about__visual">
+        <div class="gpw-about__img" role="img" aria-label="Brian Gwaltney, owner of Gwaltney's All Seasons Pressure Washing"></div>
+
+        <div class="gpw-about__badge-card" aria-hidden="true">
+          <div class="gpw-about__badge-icon" set:html={ownerIcon}></div>
+          <div>
+            <strong>{data.badge_sub}</strong>
+            <span>{data.badge_title}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <span class="gpw-label">{data.label}</span>
+        <h2 id="about-heading" style="margin:0.5rem 0 1.25rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{data.heading}</h2>
+        <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.7;margin:0 0 1rem;">{data.body}</p>
+        <p style="color:var(--gpw-mist);font-size:1rem;line-height:1.7;margin:0 0 1.75rem;font-style:italic;border-left:2px solid var(--gpw-green);padding-left:1rem;">{data.body2}</p>
+
+        <div class="gpw-about__points">
+          {data.points.map((point) => (
+            <div class="gpw-about__point">
+              <div class="gpw-about__check" set:html={checkIcon}></div>
+              <div>
+                <strong style="display:block;font-size:0.95rem;color:var(--gpw-white);margin-bottom:0.15rem;">{point.heading}</strong>
+                <span style="font-size:0.875rem;color:var(--gpw-mist);line-height:1.55;">{point.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;">
+          <a href="#contact" class="gpw-btn-primary">Get Free Quote</a>
+          <a href="tel:6154187454" class="gpw-btn-outline" style="padding:0.85rem 1.75rem;">Call 615-418-7454</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

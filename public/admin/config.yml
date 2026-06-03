@@ -1,0 +1,189 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: en
+
+media_folder: "public/images"
+public_folder: "/images"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "src/data/homepage.json"
+        format: json
+        fields:
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text",       name: "badge",           widget: "string" }
+              - { label: "Headline Line 1",  name: "headline",        widget: "string" }
+              - { label: "Headline (Green)", name: "headline_accent", widget: "string" }
+              - { label: "Headline Line 3",  name: "headline_end",    widget: "string" }
+              - { label: "Sub-headline",     name: "subheadline",     widget: "text"   }
+          - label: "Stats"
+            name: "stats"
+            widget: "list"
+            fields:
+              - { label: "Number",    name: "number",   widget: "number" }
+              - { label: "Suffix",    name: "suffix",   widget: "string" }
+              - { label: "Label",     name: "label",    widget: "string" }
+              - { label: "Sub-label", name: "sublabel", widget: "string" }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Heading",         name: "heading", widget: "string" }
+              - { label: "Body Paragraph 1",name: "body",    widget: "text"   }
+              - { label: "Body Paragraph 2",name: "body2",   widget: "text"   }
+              - label: "Bullet Points"
+                name: "points"
+                widget: "list"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string" }
+                  - { label: "Text",    name: "text",    widget: "text"   }
+
+      - name: "services"
+        label: "Services"
+        file: "src/data/services.json"
+        format: json
+        fields:
+          - { label: "Heading",     name: "heading",     widget: "string" }
+          - { label: "Description", name: "description", widget: "text"   }
+          - label: "Service Cards"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title",        name: "title",       widget: "string"  }
+              - { label: "Description",  name: "description", widget: "text"    }
+              - { label: "Most Popular?",name: "featured",    widget: "boolean", default: false }
+
+      - name: "testimonials"
+        label: "Testimonials"
+        file: "src/data/testimonials.json"
+        format: json
+        fields:
+          - { label: "Heading",    name: "heading",    widget: "string" }
+          - { label: "Sub-heading",name: "subheading", widget: "string" }
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Quote",    name: "quote",    widget: "text"   }
+              - { label: "Name",     name: "name",     widget: "string" }
+              - { label: "Location", name: "location", widget: "string" }
+              - { label: "Initials", name: "initials", widget: "string" }
+              - { label: "Rating",   name: "rating",   widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+
+      - name: "pricing"
+        label: "Pricing"
+        file: "src/data/pricing.json"
+        format: json
+        fields:
+          - { label: "Disclaimer", name: "disclaimer", widget: "text" }
+          - label: "Residential Items"
+            name: "residential"
+            widget: "object"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - label: "Line Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Service", name: "service", widget: "string" }
+                  - { label: "Price",   name: "price",   widget: "string" }
+                  - { label: "Notes",   name: "notes",   widget: "string" }
+
+      - name: "faq"
+        label: "FAQ"
+        file: "src/data/faq.json"
+        format: json
+        fields:
+          - { label: "Heading",     name: "heading",    widget: "string" }
+          - { label: "Sub-heading", name: "subheading", widget: "string" }
+          - label: "Questions"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Answer",   name: "answer",   widget: "text"   }
+
+      - name: "business"
+        label: "Business Info (Phone, Email, Address, Social)"
+        file: "src/data/business.json"
+        format: json
+        fields:
+          - { label: "Business Name",    name: "name",            widget: "string" }
+          - { label: "Tagline",          name: "tagline",         widget: "string" }
+          - { label: "Owner Name",       name: "owner",           widget: "string" }
+          - { label: "Phone (display)",  name: "phone",           widget: "string" }
+          - { label: "Phone (href)",     name: "phone_href",      widget: "string" }
+          - { label: "Email",            name: "email",           widget: "string" }
+          - { label: "Address",          name: "address",         widget: "string" }
+          - { label: "City",             name: "city",            widget: "string" }
+          - { label: "State",            name: "state",           widget: "string" }
+          - { label: "ZIP",              name: "zip",             widget: "string" }
+          - { label: "Full Address",     name: "address_full",    widget: "string" }
+          - { label: "Hours",            name: "hours",           widget: "string" }
+          - label: "Payment Methods"
+            name: "payment_methods"
+            widget: "list"
+            fields:
+              - { label: "Method", name: "method", widget: "string" }
+              - { label: "Detail", name: "detail", widget: "string", required: false }
+          - label: "Social Links"
+            name: "social"
+            widget: "list"
+            fields:
+              - { label: "Platform", name: "platform", widget: "string" }
+              - { label: "URL",      name: "url",      widget: "string" }
+              - { label: "Aria label",name: "aria",    widget: "string" }
+
+      - name: "compliance"
+        label: "Compliance Section"
+        file: "src/data/compliance.json"
+        format: json
+        fields:
+          - { label: "Heading",    name: "heading",    widget: "string" }
+          - { label: "Sub-heading",name: "subheading", widget: "string" }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Heading", name: "heading", widget: "string" }
+              - { label: "Text",    name: "text",    widget: "text"   }
+
+      - name: "contact"
+        label: "Contact Form Text"
+        file: "src/data/contact.json"
+        format: json
+        fields:
+          - { label: "Section Heading",   name: "heading",         widget: "string" }
+          - { label: "Intro Text",        name: "intro",           widget: "text"   }
+          - { label: "Tip Text",          name: "tip",             widget: "string" }
+          - { label: "Form Heading",      name: "form_heading",    widget: "string" }
+          - { label: "Form Note",         name: "form_note",       widget: "string" }
+          - { label: "Success Message",   name: "success_message", widget: "string" }
+          - { label: "Error Message",     name: "error_message",   widget: "string" }
+
+  - name: "gallery"
+    label: "Gallery Images"
+    file: "src/data/gallery.json"
+    format: json
+    fields:
+      - { label: "Heading",    name: "heading",    widget: "string" }
+      - { label: "Sub-heading",name: "subheading", widget: "string" }
+      - label: "Images"
+        name: "images"
+        widget: "list"
+        fields:
+          - { label: "Image",    name: "src",      widget: "image"  }
+          - { label: "Title",    name: "title",    widget: "string" }
+          - { label: "Category", name: "category", widget: "select",
+              options: ["Driveways","House Washing","Decks & Patios","Commercial","Fleet","Concrete"] }
+          - { label: "Tall/Featured?", name: "tall", widget: "boolean", default: false }

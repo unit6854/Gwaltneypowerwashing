@@ -1,0 +1,76 @@
+---
+import business from '../data/business.json';
+---
+
+<header class="gpw-header" id="gpw-header">
+  <div class="gpw-header__inner">
+
+    <div class="gpw-header__brand">
+      <a href="/" aria-label={`${business.name} — Home`}>
+        <img src="/images/logo.png" alt={business.name} class="gpw-logo" width="200" height="64" />
+      </a>
+    </div>
+
+    <nav class="gpw-nav" aria-label="Main navigation">
+      <ul class="gpw-nav__links">
+        {business.nav_links.map((link) => (
+          <li><a href={link.href}>{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="gpw-header__ctas">
+      <a href={business.phone_href} class="gpw-btn-call" aria-label={`Call us at ${business.phone}`}>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        {business.phone}
+      </a>
+
+      <a href="/#contact" class="gpw-btn-quote-sm">Get Free Quote</a>
+
+      <button
+        class="gpw-nav__toggle"
+        id="gpwNavToggle"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="gpwNavOverlay"
+      >
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="3" y1="6"  x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div
+  class="gpw-nav-overlay"
+  id="gpwNavOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Navigation menu"
+  aria-hidden="true"
+>
+  <button class="gpw-nav-overlay__close" id="gpwNavClose" aria-label="Close navigation menu">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"/>
+      <line x1="6"  y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <ul class="gpw-nav-overlay__links">
+    {business.nav_links.map((link) => (
+      <li><a href={link.href}>{link.label}</a></li>
+    ))}
+  </ul>
+
+  <a href={business.phone_href} class="gpw-nav-overlay__call">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.09 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .9h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+    Call {business.phone}
+  </a>
+</div>

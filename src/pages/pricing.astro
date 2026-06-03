@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import pricing from '../data/pricing.json';
+---
+
+<Layout
+  title="Pricing — Gwaltney's All Seasons Pressure Washing | Mt. Juliet, TN"
+  description="Honest, transparent pressure washing pricing for Mt. Juliet and Middle Tennessee. Starting rates for driveways, house washing, decks, commercial, and fleet. Free quotes — no hidden fees."
+>
+  <Header />
+
+  <main>
+    <!-- Page Hero -->
+    <div class="gpw-page-hero">
+      <span class="gpw-label">{pricing.label}</span>
+      <h1>{pricing.heading}</h1>
+      <p>{pricing.subheading}</p>
+    </div>
+
+    <div class="gpw-pricing-section">
+      <div class="gpw-section-inner">
+
+        <!-- Disclaimer -->
+        <div class="gpw-disclaimer">
+          <strong>Note:</strong> {pricing.disclaimer}
+        </div>
+
+        <!-- Residential Pricing -->
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:var(--gpw-white);margin:0 0 1rem;letter-spacing:-0.02em;">
+          {pricing.residential.heading}
+        </h2>
+        <div class="gpw-pricing-table">
+          <div class="gpw-pricing-table-head">Service &amp; Starting Price</div>
+          {pricing.residential.items.map((item) => (
+            <div class="gpw-pricing-row">
+              <div>
+                <div class="gpw-pricing-service">{item.service}</div>
+                <div class="gpw-pricing-notes">{item.notes}</div>
+              </div>
+              <div class="gpw-pricing-price">{item.price}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Commercial Pricing -->
+        <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:var(--gpw-white);margin:2.5rem 0 1rem;letter-spacing:-0.02em;">
+          {pricing.commercial.heading}
+        </h2>
+        <div class="gpw-pricing-table">
+          <div class="gpw-pricing-table-head">Service &amp; Pricing</div>
+          {pricing.commercial.items.map((item) => (
+            <div class="gpw-pricing-row">
+              <div>
+                <div class="gpw-pricing-service">{item.service}</div>
+                <div class="gpw-pricing-notes">{item.notes}</div>
+              </div>
+              <div class="gpw-pricing-price">{item.price}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Packages -->
+        <div style="margin-top:3rem;">
+          <span class="gpw-label">Best Value</span>
+          <h2 style="font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;color:var(--gpw-white);margin:0.5rem 0 0.5rem;letter-spacing:-0.02em;">Service Packages</h2>
+          <p style="color:var(--gpw-mist);margin:0 0 0;font-size:0.95rem;">Bundle services and save. Perfect for spring cleaning or pre-sale prep.</p>
+          <div class="gpw-packages-grid">
+            {pricing.packages.map((pkg) => (
+              <div class={`gpw-package-card${pkg.popular ? ' gpw-package-card--popular' : ''}`}>
+                {pkg.popular && <span class="gpw-package-popular-badge">Most Popular</span>}
+                <div class="gpw-package-name">{pkg.name}</div>
+                <div class="gpw-package-desc">{pkg.description}</div>
+                <div class="gpw-package-price">{pkg.price}</div>
+                <ul class="gpw-package-includes">
+                  {pkg.includes.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <!-- Payment Methods -->
+        <div style="margin-top:3rem;">
+          <h2 style="font-size:1.25rem;font-weight:700;color:var(--gpw-white);margin:0 0 1rem;">Payment Methods</h2>
+          <div class="gpw-payment-methods">
+            {pricing.payment_methods.map((p) => (
+              <div class="gpw-payment-badge">
+                <strong>{p.method}</strong>
+                {p.detail && <span style="color:var(--gpw-mist);margin-left:0.25rem;">{p.detail}</span>}
+              </div>
+            ))}
+          </div>
+          <p style="color:var(--gpw-mist);font-size:0.85rem;margin-top:0.75rem;">Payment is due upon satisfactory completion of each job.</p>
+        </div>
+
+        <!-- CTA -->
+        <div style="margin-top:3rem;padding:2rem;background:linear-gradient(135deg,#0d2010,#091808);border:1px solid rgba(34,197,94,0.2);border-radius:var(--gpw-radius);text-align:center;">
+          <h2 style="font-size:1.5rem;font-weight:800;color:var(--gpw-white);margin:0 0 0.5rem;">Ready for Your Free Quote?</h2>
+          <p style="color:var(--gpw-mist);margin:0 0 1.5rem;font-size:0.95rem;">Call Brian directly or submit the form — no obligation, no pressure.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="tel:6154187454" class="gpw-btn-primary">Call 615-418-7454</a>
+            <a href="/#contact" class="gpw-btn-outline">Get Free Quote Online</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

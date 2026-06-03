@@ -1,0 +1,43 @@
+---
+import galleryData from '../data/gallery.json';
+
+// Show first 12 images on homepage (full list on gallery page)
+const images = galleryData.images.slice(0, 12);
+---
+
+<section class="gpw-gallery" id="gallery" aria-labelledby="gallery-heading">
+  <div class="gpw-section-inner">
+    <div class="gpw-section-header gpw-text-center">
+      <span class="gpw-label">{galleryData.label}</span>
+      <h2 id="gallery-heading" style="margin:0.5rem 0 0.75rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{galleryData.heading}</h2>
+      <p style="color:var(--gpw-mist);max-width:56ch;margin:0 auto;font-size:1rem;line-height:1.65;">{galleryData.subheading}</p>
+    </div>
+
+    <div class="gpw-gallery__grid">
+      {images.map((img) => (
+        <figure class={`gpw-gallery-item${img.tall ? ' gpw-gallery-item--tall' : ''}`} aria-label={img.title}>
+          <div class="gpw-gallery-item__img-wrap">
+            <img
+              src={img.src}
+              alt={img.title + ' — Gwaltney\'s Pressure Washing'}
+              class="gpw-gallery-item__img"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="gpw-gallery-overlay" aria-hidden="true">
+              <span>View</span>
+            </div>
+          </div>
+          <figcaption class="gpw-gallery-item__meta">
+            <span class="gpw-gallery-item__tag">{img.category}</span>
+            <span class="gpw-gallery-item__title">{img.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="/#contact" class="gpw-btn-ghost">Book Your Cleaning</a>
+    </div>
+  </div>
+</section>

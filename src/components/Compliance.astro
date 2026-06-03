@@ -1,0 +1,30 @@
+---
+import compliance from '../data/compliance.json';
+
+const icons: Record<string, string> = {
+  shield:  `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  package: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>`,
+  droplet: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>`,
+  globe:   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>`,
+  heart:   `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+};
+---
+
+<section class="gpw-compliance" aria-labelledby="compliance-heading">
+  <div class="gpw-section-inner">
+    <div style="text-align:center;">
+      <span class="gpw-label">{compliance.label}</span>
+      <h2 id="compliance-heading" style="margin:0.5rem 0 0.5rem;font-size:clamp(1.5rem,3vw,2.25rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{compliance.heading}</h2>
+      <p style="color:var(--gpw-mist);max-width:56ch;margin:0 auto;font-size:0.95rem;line-height:1.65;">{compliance.subheading}</p>
+    </div>
+    <div class="gpw-compliance-grid">
+      {compliance.items.map((item) => (
+        <div class="gpw-compliance-item">
+          <div class="gpw-compliance-icon" set:html={icons[item.icon] ?? icons.shield} aria-hidden="true"></div>
+          <h4>{item.heading}</h4>
+          <p>{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

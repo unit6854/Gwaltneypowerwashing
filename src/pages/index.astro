@@ -1,0 +1,39 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import Stats from '../components/Stats.astro';
+import Gallery from '../components/Gallery.astro';
+import Testimonials from '../components/Testimonials.astro';
+import About from '../components/About.astro';
+import Compliance from '../components/Compliance.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Footer from '../components/Footer.astro';
+
+import homepage from '../data/homepage.json';
+import services from '../data/services.json';
+import testimonials from '../data/testimonials.json';
+---
+
+<Layout
+  title="Gwaltney's All Seasons Pressure Washing | Mt. Juliet, TN | 615-418-7454"
+  description="Family-owned pressure washing serving Wilson, Davidson & Rutherford Counties. Driveways, house washing, decks, commercial & more. Licensed, insured, wastewater compliant. Call 615-418-7454."
+>
+  <Header />
+
+  <main>
+    <Hero data={homepage.hero} />
+    <TrustBar items={homepage.trust_items} />
+    <Services data={services} />
+    <Stats stats={homepage.stats} />
+    <Gallery />
+    <Testimonials data={testimonials} />
+    <About data={homepage.about} />
+    <Compliance />
+    <ContactForm />
+  </main>
+
+  <Footer />
+</Layout>

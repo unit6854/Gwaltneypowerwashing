@@ -1,0 +1,59 @@
+{
+  "label": "Transparent Pricing",
+  "heading": "Honest Pricing. No Surprises.",
+  "subheading": "Every job is quoted before work begins. No hidden fees, no upsells. What we quote is what you pay.",
+  "disclaimer": "Prices shown are starting rates. Final pricing depends on square footage, surface condition, and site accessibility. Contact us for your exact free quote — no obligation.",
+  "residential": {
+    "heading": "Residential Services",
+    "items": [
+      { "service": "Single Car Driveway",         "price": "Starting at $99",  "notes": "Standard concrete driveway"  },
+      { "service": "Double / Long Driveway",      "price": "Starting at $149", "notes": "2-car or extended driveway"  },
+      { "service": "House Wash — Small Home",     "price": "Starting at $199", "notes": "Up to 1,500 sq ft"           },
+      { "service": "House Wash — Medium Home",    "price": "Starting at $299", "notes": "1,500–2,500 sq ft"           },
+      { "service": "House Wash — Large Home",     "price": "Starting at $399", "notes": "2,500+ sq ft"                },
+      { "service": "Deck or Patio",               "price": "Starting at $149", "notes": "Up to 400 sq ft"             },
+      { "service": "Fence Cleaning",              "price": "Starting at $99",  "notes": "Up to 100 linear feet"       },
+      { "service": "Sidewalk & Walkway",          "price": "Starting at $79",  "notes": "Standard front walkway"      }
+    ]
+  },
+  "commercial": {
+    "heading": "Commercial Services",
+    "items": [
+      { "service": "Building Exterior",      "price": "Custom Quote", "notes": "Call for pricing"        },
+      { "service": "Parking Lot / Concrete", "price": "Custom Quote", "notes": "Priced per square foot"  },
+      { "service": "Fleet Vehicles",         "price": "Custom Quote", "notes": "Per vehicle pricing"     },
+      { "service": "Loading Docks",          "price": "Custom Quote", "notes": "Call for pricing"        },
+      { "service": "Storefront Exterior",    "price": "Custom Quote", "notes": "Call for pricing"        }
+    ]
+  },
+  "packages": [
+    {
+      "name": "Spring Clean Package",
+      "price": "Starting at $349",
+      "description": "Our most popular combo to kick off the season right.",
+      "includes": [
+        "House wash (up to 2,000 sq ft)",
+        "Driveway & sidewalk",
+        "Front walkway"
+      ],
+      "popular": true
+    },
+    {
+      "name": "Curb Appeal Package",
+      "price": "Starting at $499",
+      "description": "Everything you need to maximize your home's first impression.",
+      "includes": [
+        "House wash (up to 2,500 sq ft)",
+        "Driveway & sidewalk",
+        "Deck or patio (up to 400 sq ft)",
+        "Fence (up to 100 linear ft)"
+      ],
+      "popular": false
+    }
+  ],
+  "payment_methods": [
+    { "method": "Venmo",  "detail": "@Brian-Gwaltney-11" },
+    { "method": "Cash",   "detail": "" },
+    { "method": "Check",  "detail": "Made out to Gwaltney's ASP" }
+  ]
+}

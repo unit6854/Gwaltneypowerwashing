@@ -1,0 +1,32 @@
+{
+  "label": "Our Commitment",
+  "heading": "Licensed, Insured & Environmentally Responsible",
+  "subheading": "We operate to the highest professional and environmental standards — because your trust is our most valuable asset.",
+  "items": [
+    {
+      "icon": "shield",
+      "heading": "Licensed & Permitted",
+      "text": "Fully licensed and permitted to operate in the City of Mt. Juliet and throughout our service area."
+    },
+    {
+      "icon": "package",
+      "heading": "Fully Insured",
+      "text": "Carrying full general liability insurance on every job — protecting you, your property, and your peace of mind."
+    },
+    {
+      "icon": "droplet",
+      "heading": "Wastewater Compliant",
+      "text": "Compliant with City of Mt. Juliet wastewater regulations. We use drain berms on every job to contain runoff."
+    },
+    {
+      "icon": "globe",
+      "heading": "Biodegradable Chemicals",
+      "text": "We only use eco-friendly, biodegradable cleaning solutions — safe for your family, pets, plants, and the environment."
+    },
+    {
+      "icon": "heart",
+      "heading": "Locally Owned & Operated",
+      "text": "Based in Mt. Juliet, TN — a family-owned business serving the same community we call home since 2009."
+    }
+  ]
+}

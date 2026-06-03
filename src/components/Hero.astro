@@ -1,0 +1,66 @@
+---
+interface Props {
+  data: {
+    badge: string;
+    headline: string;
+    headline_accent: string;
+    headline_end: string;
+    subheadline: string;
+    cta_call: string;
+    cta_quote: string;
+  };
+}
+const { data } = Astro.props;
+---
+
+<section class="gpw-hero" id="gpw-hero" aria-label="Hero — Gwaltney's Pressure Washing">
+  <!-- WebGL canvas -->
+  <div id="gpw-webgl-container" aria-hidden="true">
+    <canvas id="gpw-webgl-canvas"></canvas>
+  </div>
+
+  <!-- Text legibility overlay (left gradient) -->
+  <div class="gpw-hero__overlay" aria-hidden="true"></div>
+
+  <!-- Scan lines (subtle CRT depth effect) -->
+  <div class="gpw-hero__scan-lines" aria-hidden="true"></div>
+
+  <!-- Hero content -->
+  <div class="gpw-hero__content">
+    <div class="gpw-hero__badge">
+      <span class="gpw-status-dot" aria-hidden="true"></span>
+      <span>{data.badge}</span>
+    </div>
+
+    <h1 class="gpw-hero__headline">
+      {data.headline}<br />
+      <span class="gpw-text-green">{data.headline_accent}</span><br />
+      {data.headline_end}
+    </h1>
+
+    <p class="gpw-hero__sub">{data.subheadline}</p>
+
+    <div class="gpw-hero__ctas">
+      <a href="tel:6154187454" class="gpw-btn-primary" aria-label="Call 615-418-7454 now">
+        {data.cta_call}
+      </a>
+      <a href="#contact" class="gpw-btn-outline">
+        {data.cta_quote}
+      </a>
+    </div>
+
+    <div class="gpw-hero__scroll-hint" aria-hidden="true">
+      <span class="gpw-scroll-line"></span>
+      Scroll to explore
+    </div>
+  </div>
+
+  <!-- Cursor hint (desktop) -->
+  <div class="gpw-hero__cursor-hint" id="gpwCursorHint" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <circle cx="12" cy="12" r="10"/>
+      <path d="M12 2v4M12 18v4M2 12h4M18 12h4"/>
+    </svg>
+    Move cursor to pressure-wash
+  </div>
+</section>

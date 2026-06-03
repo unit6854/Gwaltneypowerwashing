@@ -1,0 +1,70 @@
+---
+interface TestimonialItem {
+  quote: string;
+  name: string;
+  location: string;
+  initials: string;
+  rating: number;
+}
+interface Props {
+  data: {
+    label: string;
+    heading: string;
+    subheading: string;
+    items: TestimonialItem[];
+  };
+}
+const { data } = Astro.props;
+
+const star = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+---
+
+<section class="gpw-testimonials" id="testimonials" aria-labelledby="testimonials-heading">
+  <div class="gpw-section-inner">
+    <div class="gpw-section-header gpw-text-center">
+      <span class="gpw-label">{data.label}</span>
+      <h2 id="testimonials-heading" style="margin:0.5rem 0 0.75rem;font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:800;color:var(--gpw-white);letter-spacing:-0.02em;">{data.heading}</h2>
+      <p style="color:var(--gpw-mist);max-width:52ch;margin:0 auto;font-size:1rem;line-height:1.65;">{data.subheading}</p>
+    </div>
+
+    <div class="gpw-testi-slider" id="gpwTestiSlider" role="region" aria-roledescription="carousel" aria-label="Customer testimonials">
+      <div class="gpw-testi-track" aria-live="polite">
+        {data.items.map((item, i) => (
+          <div class="gpw-testi-slide" role="group" aria-roledescription="slide" aria-label={`Testimonial ${i + 1} of ${data.items.length}`}>
+            <article class="gpw-testi-card">
+              <div class="gpw-testi-stars" aria-label={`${item.rating} out of 5 stars`} set:html={star.repeat(item.rating)}></div>
+              <blockquote class="gpw-testi-quote">"{item.quote}"</blockquote>
+              <div class="gpw-testi-author">
+                <div class="gpw-testi-avatar" aria-hidden="true">{item.initials}</div>
+                <div class="gpw-testi-info">
+                  <strong>{item.name}</strong>
+                  <span>{item.location}</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        ))}
+      </div>
+
+      <div class="gpw-testi-controls" aria-label="Testimonial navigation">
+        <button class="gpw-testi-btn gpw-testi-prev" aria-label="Previous testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="gpw-testi-dots" role="tablist" aria-label="Testimonial slides">
+          {data.items.map((_, i) => (
+            <button
+              class={`gpw-testi-dot${i === 0 ? ' gpw-testi-dot--active' : ''}`}
+              data-index={i}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              aria-label={`Go to testimonial ${i + 1}`}
+            ></button>
+          ))}
+        </div>
+        <button class="gpw-testi-btn gpw-testi-next" aria-label="Next testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
