@@ -14,7 +14,9 @@ const {
   ogTitle     = business.name,
 } = Astro.props;
 
-const siteUrl = "https://gwaltneypressurewashing.com";
+const siteUrl     = "https://gwaltneypressurewashing.com";
+// Dynamic canonical — fixes the #1 SEO issue (all pages were claiming to be the homepage)
+const canonicalURL = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -25,22 +27,28 @@ const siteUrl = "https://gwaltneypressurewashing.com";
   <!-- Primary SEO -->
   <title>{title}</title>
   <meta name="description" content={description} />
-  <meta name="keywords" content="pressure washing Mt Juliet TN, power washing Tennessee, pressure washing Wilson County, pressure washing Davidson County, pressure washing Rutherford County, residential pressure washing Nashville, commercial pressure washing Lebanon TN, driveway cleaning Mt Juliet, house washing Nashville, deck cleaning Tennessee, affordable pressure washing, local pressure washing, family owned pressure washing" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href={siteUrl} />
+  <!-- Gwaltney branded terms listed first — critical for showing up on name searches -->
+  <meta name="keywords" content="gwaltney pressure washing, gwaltneys pressure washing, gwaltney power washing, gwaltney's all seasons pressure washing, brian gwaltney pressure washing, gwaltney mt juliet tn, gwaltney pressure washing mt juliet, gwaltney's ASP, pressure washing Mt Juliet TN, power washing Tennessee, pressure washing Wilson County, pressure washing Davidson County, pressure washing Rutherford County, residential pressure washing Nashville, commercial pressure washing Lebanon TN, driveway cleaning Mt Juliet, house washing Nashville, deck cleaning Tennessee, affordable pressure washing, local pressure washing, family owned pressure washing" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content={business.owner} />
+  <!-- Dynamic canonical — unique per page, prevents duplicate content penalty -->
+  <link rel="canonical" href={canonicalURL} />
 
-  <!-- Open Graph -->
+  <!-- Open Graph — dynamic URL per page -->
   <meta property="og:type"        content="website" />
-  <meta property="og:url"         content={siteUrl} />
+  <meta property="og:url"         content={canonicalURL} />
+  <meta property="og:site_name"   content={business.name} />
   <meta property="og:title"       content={ogTitle} />
   <meta property="og:description" content={description} />
   <meta property="og:image"       content={`${siteUrl}/images/logo.png`} />
+  <meta property="og:image:alt"   content={`${business.name} logo`} />
   <meta property="og:locale"      content="en_US" />
 
-  <!-- Twitter -->
+  <!-- Twitter / X -->
   <meta name="twitter:card"        content="summary_large_image" />
   <meta name="twitter:title"       content={ogTitle} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image"       content={`${siteUrl}/images/logo.png`} />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="/images/logo.png" />
@@ -53,33 +61,35 @@ const siteUrl = "https://gwaltneypressurewashing.com";
   <!-- Sitemap -->
   <link rel="sitemap" href="/sitemap.xml" />
 
-  <!-- Hero texture preloads — crossorigin="anonymous" must match the
-       Three.js TextureLoader which also uses anonymous CORS mode -->
+  <!-- Hero texture preloads -->
   <link rel="preload" as="image" href="/images/dirty.webp" fetchpriority="high" crossorigin="anonymous" />
   <link rel="preload" as="image" href="/images/clean.webp" crossorigin="anonymous" />
-  <!-- Preload Three.js so the GPU effect starts as soon as possible -->
   <link rel="preload" as="script" href="/js/three.min.js" />
 
-  <!-- Netlify Identity widget lives in /admin/index.html only.
-       Loading it on every page caused a CORS error. CMS access is
-       at gwaltneypressurewashing.com/admin/ — no widget needed here. -->
-
-  <!-- Local Business Schema — values sourced from src/data/business.json -->
+  <!-- Local Business Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://gwaltneypressurewashing.com",
+    "@id": canonicalURL,
     "name": business.name,
-    "alternateName": "Gwaltney's ASP",
+    "alternateName": [
+      "Gwaltney's ASP",
+      "Gwaltney Pressure Washing",
+      "Gwaltneys Pressure Washing",
+      "Gwaltney Power Washing",
+      "Brian Gwaltney Pressure Washing",
+      "Gwaltney's Pressure Washing",
+      "Gwaltney's All Seasons",
+      "Gwaltney All Seasons Pressure Washing"
+    ],
     "description": `Family-owned, owner-operated pressure washing service based in ${business.city}, ${business.state}. Serving ${business.service_areas.join(', ')} since ${business.founded}. Fully licensed, insured, and wastewater compliant.`,
-    "url": "https://gwaltneypressurewashing.com",
-    "telephone": business.phone_href.replace('tel:', '+1').replace(/-/g, ''),
+    "url": siteUrl,
+    "telephone": "+16154187454",
     "email": business.email,
     "foundingDate": business.founded,
     "founder": { "@type": "Person", "name": business.owner },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": business.address,
       "addressLocality": business.city,
       "addressRegion": business.state,
       "postalCode": business.zip,
@@ -91,14 +101,16 @@ const siteUrl = "https://gwaltneypressurewashing.com";
       "longitude": "-86.5186"
     },
     "areaServed": business.service_areas.map(a => ({
-      "@type": "County", "name": a,
+      "@type": "County",
+      "name": a,
       "containedInPlace": { "@type": "State", "name": "Tennessee" }
     })),
     "serviceType": [
       "House Washing", "Driveway Cleaning", "Deck and Patio Cleaning",
       "Building Exterior Washing", "Fleet Vehicle Washing", "Concrete Cleaning",
-      "Fence Cleaning", "Sidewalk Cleaning"
+      "Fence Cleaning", "Sidewalk Cleaning", "Pressure Washing", "Power Washing"
     ],
+    "slogan": business.tagline,
     "sameAs": business.social.map(s => s.url),
     "priceRange": "$$",
     "openingHoursSpecification": {
@@ -121,27 +133,25 @@ const siteUrl = "https://gwaltneypressurewashing.com";
     }
   })} />
 
-  <!-- AI / Copilot search optimization — plain language business summary -->
+  <!-- AI search summary (ChatGPT, Copilot, Perplexity, Claude, Google AI) -->
   <!--
     Business: Gwaltney's All Seasons Pressure Washing
-    Owner: Brian Gwaltney (sole owner-operator, no crew)
+    Also known as: Gwaltney Pressure Washing, Gwaltneys Pressure Washing, Gwaltney Power Washing
+    Owner: Brian Gwaltney (sole owner-operator, performs every job personally)
     Phone: 615-418-7454
-    Location: 102 Greystone Road, Mount Juliet, TN 37122
+    Location: Mount Juliet, TN
     Service area: Wilson County, Davidson County, Rutherford County, Tennessee
     Years in business: 15+ (since 2009)
     Services: House washing, driveway cleaning, deck/patio cleaning,
               building exteriors, fleet washing, concrete cleaning, fence cleaning
     Certifications: Licensed, permitted, fully insured
-    Environmental: Wastewater compliant (City of Mt. Juliet), drain berms, biodegradable chemicals
-    Payment: Venmo @Brian-Gwaltney-11, Cash, Check
-    Tagline: "Honest Work for Honest Pricing" — "Service with a Smile"
+    Environmental: Wastewater compliant, drain berms, biodegradable chemicals
   -->
 </head>
 <body>
   <slot />
 
-  <!-- Redirect Netlify Identity tokens (password reset, invite) to /admin/
-       where the Identity widget is loaded and can handle them properly -->
+  <!-- Redirect Netlify Identity tokens to /admin/ where the widget is loaded -->
   <script is:inline>
     (function() {
       var h = window.location.hash;
