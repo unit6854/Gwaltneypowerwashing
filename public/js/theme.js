@@ -275,6 +275,36 @@
     });
   })();
 
+  // ─── Portfolio / Our Work Filter ─────────────────────────────────────────
+  (function initPortfolioFilter() {
+    var grid    = document.getElementById('gpwPortfolioGrid');
+    var filters = document.querySelectorAll('.gpw-portfolio-filters .gpw-filter-btn');
+    if (!grid || !filters.length) return;
+
+    filters.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = this.dataset.filter;
+
+        filters.forEach(function(b) { b.classList.remove('is-active'); });
+        this.classList.add('is-active');
+
+        grid.querySelectorAll('.gpw-portfolio-item').forEach(function(item) {
+          if (filter === '*' || item.dataset.category === filter) {
+            item.classList.remove('is-hidden');
+          } else {
+            item.classList.add('is-hidden');
+          }
+        });
+      });
+    });
+
+    // Hide play-btn overlay once video starts playing
+    grid.querySelectorAll('.gpw-portfolio-video').forEach(function(v) {
+      var overlay = v.parentElement.querySelector('.gpw-portfolio-play-btn');
+      if (overlay) v.addEventListener('play', function() { overlay.style.display = 'none'; });
+    });
+  })();
+
   // ─── Before / After Sliders ──────────────────────────────────────────────
   (function initBeforeAfterSliders() {
     var sliders = document.querySelectorAll('.gpw-ba-slider');

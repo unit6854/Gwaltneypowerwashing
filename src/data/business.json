@@ -6,11 +6,11 @@
   "phone": "615-418-7454",
   "phone_href": "tel:6154187454",
   "email": "Gwaltneysasp@gmail.com",
-  "address": "102 Greystone Road",
+  "address": "",
   "city": "Mount Juliet",
   "state": "TN",
   "zip": "37122",
-  "address_full": "102 Greystone Road, Mount Juliet, TN 37122",
+  "address_full": "Mt. Juliet, TN",
   "years_experience": "15+",
   "founded": "2009",
   "service_areas": [
@@ -43,12 +43,13 @@
     }
   ],
   "nav_links": [
-    { "href": "/#services",     "label": "Services"  },
-    { "href": "/#gallery",      "label": "Our Work"  },
-    { "href": "/#testimonials", "label": "Reviews"   },
-    { "href": "/#about",        "label": "About"     },
-    { "href": "/pricing",       "label": "Pricing"   },
-    { "href": "/faq",           "label": "FAQ"       }
+    { "href": "/#services",     "label": "Services"       },
+    { "href": "/#gallery",      "label": "Before & After" },
+    { "href": "/our-work",      "label": "Our Work"       },
+    { "href": "/#testimonials", "label": "Reviews"        },
+    { "href": "/#about",        "label": "About"          },
+    { "href": "/pricing",       "label": "Pricing"        },
+    { "href": "/faq",           "label": "FAQ"            }
   ],
   "footer_services": [
     { "label": "House Washing",           "href": "/#services" },
@@ -59,11 +60,12 @@
     { "label": "Concrete & Parking Lots", "href": "/#services" }
   ],
   "footer_company": [
-    { "label": "About Brian",  "href": "/#about"        },
-    { "label": "Our Work",     "href": "/#gallery"      },
-    { "label": "Reviews",      "href": "/#testimonials" },
-    { "label": "Pricing",      "href": "/pricing"       },
-    { "label": "FAQ",          "href": "/faq"           },
-    { "label": "Get a Quote",  "href": "/#contact"      }
+    { "label": "About Brian",    "href": "/#about"        },
+    { "label": "Before & After", "href": "/#gallery"      },
+    { "label": "Our Work",       "href": "/our-work"      },
+    { "label": "Reviews",        "href": "/#testimonials" },
+    { "label": "Pricing",        "href": "/pricing"       },
+    { "label": "FAQ",            "href": "/faq"           },
+    { "label": "Get a Quote",    "href": "/#contact"      }
   ]
 }

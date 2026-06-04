@@ -1,0 +1,101 @@
+---
+import Layout   from '../layouts/Layout.astro';
+import Header   from '../components/Header.astro';
+import Footer   from '../components/Footer.astro';
+import business from '../data/business.json';
+import portfolio from '../data/portfolio.json';
+---
+
+<Layout
+  title={`Our Work | ${business.name}`}
+  description={`Browse real pressure washing results by Brian Gwaltney in ${business.address_full}. Driveways, house washing, decks, commercial and more.`}
+>
+  <Header />
+
+  <main>
+    <section class="gpw-ourwork-page" aria-labelledby="ow-heading">
+      <div class="gpw-section-inner gpw-ourwork-inner">
+
+        <!-- Header -->
+        <div class="gpw-text-center gpw-ourwork-header">
+          <span class="gpw-label">Portfolio</span>
+          <h1 id="ow-heading" class="gpw-section-heading">{portfolio.heading}</h1>
+          <p class="gpw-section-sub" style="max-width:60ch;margin:0 auto;">{portfolio.subheading}</p>
+        </div>
+
+        <!-- Category filters -->
+        <div class="gpw-portfolio-filters" role="group" aria-label="Filter by category">
+          {portfolio.categories.map((cat, i) => (
+            <button
+              class={`gpw-filter-btn${i === 0 ? ' is-active' : ''}`}
+              data-filter={cat === 'All' ? '*' : cat}
+              type="button"
+            >{cat}</button>
+          ))}
+        </div>
+
+        <!-- Grid or empty state -->
+        {portfolio.items.length === 0 ? (
+          <div class="gpw-ourwork-empty">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true" style="color:var(--gpw-green);margin-bottom:1rem;">
+              <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <p>Brian is uploading his latest work — check back soon!</p>
+            <a href="/#contact" class="gpw-btn-primary" style="margin-top:1.5rem;display:inline-block;">Get a Free Quote</a>
+          </div>
+        ) : (
+          <div class="gpw-portfolio-grid" id="gpwPortfolioGrid">
+            {portfolio.items.map((item) => (
+              <div class="gpw-portfolio-item gpw-reveal" data-category={item.category}>
+                <div class="gpw-portfolio-media">
+                  {item.type === 'video' ? (
+                    <video
+                      src={item.src}
+                      controls
+                      preload="none"
+                      playsinline
+                      class="gpw-portfolio-video"
+                      aria-label={item.title}
+                    ></video>
+                  ) : (
+                    <img
+                      src={item.src}
+                      alt={`${item.title} — ${item.caption ?? item.category}`}
+                      loading="lazy"
+                      decoding="async"
+                      class="gpw-portfolio-img"
+                    />
+                  )}
+                  {item.type === 'video' && (
+                    <div class="gpw-portfolio-play-btn" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36"><path d="M8 5v14l11-7z"/></svg>
+                    </div>
+                  )}
+                  <div class="gpw-portfolio-overlay" aria-hidden="true">
+                    <span>{item.category}</span>
+                  </div>
+                </div>
+                <div class="gpw-portfolio-caption">
+                  <span class="gpw-portfolio-caption__title">{item.title}</span>
+                  {item.caption && (
+                    <span class="gpw-portfolio-caption__loc">{item.caption}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <!-- Bottom CTA -->
+        <div class="gpw-text-center gpw-ourwork-cta">
+          <p style="color:var(--gpw-mist);margin-bottom:1.25rem;">Like what you see? Brian serves {business.service_areas.join(', ')}.</p>
+          <a href="/#contact" class="gpw-btn-primary">Get Your Free Quote</a>
+          <a href={business.phone_href} class="gpw-btn-outline" style="padding:0.85rem 1.75rem;">Call {business.phone}</a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

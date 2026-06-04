@@ -4,16 +4,70 @@ backend:
 
 locale: en
 
-media_folder: "public/images"
-public_folder: "/images"
+# All uploads go here — images AND videos
+media_folder: "public/uploads"
+public_folder: "/uploads"
 
 collections:
+
+  # ── ⭐ OUR WORK / PORTFOLIO (main thing Brian will use) ──────────────────
+  - name: "portfolio"
+    label: "⭐ Our Work — Add Photos & Videos"
+    files:
+      - name: "items"
+        label: "Manage Photos & Videos"
+        file: "src/data/portfolio.json"
+        format: json
+        fields:
+          - { label: "Page Heading",    name: "heading",    widget: "string" }
+          - { label: "Page Sub-heading",name: "subheading", widget: "text"   }
+          - label: "Photos & Videos"
+            name: "items"
+            widget: "list"
+            label_singular: "Photo or Video"
+            summary: "{{fields.title}} ({{fields.category}})"
+            add_button_text: "➕ Add Photo or Video"
+            fields:
+              - label: "Job Title / Description"
+                name: "title"
+                widget: "string"
+                hint: "e.g. Driveway Cleaning — Lebanon, TN"
+              - label: "Upload Photo or Video"
+                name: "src"
+                widget: "file"
+                hint: "Photos: JPG or WebP. Videos: MP4. Keep videos under 50MB."
+                media_library:
+                  max_file_size: 52428800
+              - label: "Type"
+                name: "type"
+                widget: "select"
+                default: "image"
+                options:
+                  - { label: "📷 Photo",  value: "image" }
+                  - { label: "🎥 Video",  value: "video" }
+              - label: "Category"
+                name: "category"
+                widget: "select"
+                options:
+                  - "Driveways"
+                  - "House Washing"
+                  - "Decks & Patios"
+                  - "Commercial"
+                  - "Concrete"
+                  - "Fleet"
+              - label: "Location (optional)"
+                name: "caption"
+                widget: "string"
+                required: false
+                hint: "e.g. Mt. Juliet, TN"
+
+  # ── Site Content (text editing) ──────────────────────────────────────────
   - name: "pages"
-    label: "Pages"
+    label: "Site Content (Text & Reviews)"
     files:
 
       - name: "homepage"
-        label: "Homepage Content"
+        label: "Homepage Text"
         file: "src/data/homepage.json"
         format: json
         fields:
@@ -38,15 +92,32 @@ collections:
             name: "about"
             widget: "object"
             fields:
-              - { label: "Heading",         name: "heading", widget: "string" }
-              - { label: "Body Paragraph 1",name: "body",    widget: "text"   }
-              - { label: "Body Paragraph 2",name: "body2",   widget: "text"   }
+              - { label: "Heading",          name: "heading", widget: "string" }
+              - { label: "Body Paragraph 1", name: "body",    widget: "text"   }
+              - { label: "Body Paragraph 2", name: "body2",   widget: "text"   }
               - label: "Bullet Points"
                 name: "points"
                 widget: "list"
                 fields:
                   - { label: "Heading", name: "heading", widget: "string" }
                   - { label: "Text",    name: "text",    widget: "text"   }
+
+      - name: "testimonials"
+        label: "Customer Reviews"
+        file: "src/data/testimonials.json"
+        format: json
+        fields:
+          - { label: "Heading",     name: "heading",    widget: "string" }
+          - { label: "Sub-heading", name: "subheading", widget: "string" }
+          - label: "Reviews"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Review Text", name: "quote",    widget: "text"   }
+              - { label: "Customer Name", name: "name",   widget: "string" }
+              - { label: "Location",    name: "location", widget: "string" }
+              - { label: "Initials",    name: "initials", widget: "string", hint: "2 letters, e.g. SM" }
+              - { label: "Star Rating", name: "rating",   widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
 
       - name: "services"
         label: "Services"
@@ -59,26 +130,9 @@ collections:
             name: "items"
             widget: "list"
             fields:
-              - { label: "Title",        name: "title",       widget: "string"  }
-              - { label: "Description",  name: "description", widget: "text"    }
-              - { label: "Most Popular?",name: "featured",    widget: "boolean", default: false }
-
-      - name: "testimonials"
-        label: "Testimonials"
-        file: "src/data/testimonials.json"
-        format: json
-        fields:
-          - { label: "Heading",    name: "heading",    widget: "string" }
-          - { label: "Sub-heading",name: "subheading", widget: "string" }
-          - label: "Reviews"
-            name: "items"
-            widget: "list"
-            fields:
-              - { label: "Quote",    name: "quote",    widget: "text"   }
-              - { label: "Name",     name: "name",     widget: "string" }
-              - { label: "Location", name: "location", widget: "string" }
-              - { label: "Initials", name: "initials", widget: "string" }
-              - { label: "Rating",   name: "rating",   widget: "number", value_type: "int", min: 1, max: 5, default: 5 }
+              - { label: "Title",         name: "title",       widget: "string"  }
+              - { label: "Description",   name: "description", widget: "text"    }
+              - { label: "Most Popular?", name: "featured",    widget: "boolean", default: false }
 
       - name: "pricing"
         label: "Pricing"
@@ -86,7 +140,7 @@ collections:
         format: json
         fields:
           - { label: "Disclaimer", name: "disclaimer", widget: "text" }
-          - label: "Residential Items"
+          - label: "Residential"
             name: "residential"
             widget: "object"
             fields:
@@ -114,22 +168,13 @@ collections:
               - { label: "Answer",   name: "answer",   widget: "text"   }
 
       - name: "business"
-        label: "Business Info (Phone, Email, Address, Social)"
+        label: "Contact Info & Social Links"
         file: "src/data/business.json"
         format: json
         fields:
-          - { label: "Business Name",    name: "name",            widget: "string" }
-          - { label: "Tagline",          name: "tagline",         widget: "string" }
-          - { label: "Owner Name",       name: "owner",           widget: "string" }
-          - { label: "Phone (display)",  name: "phone",           widget: "string" }
-          - { label: "Phone (href)",     name: "phone_href",      widget: "string" }
-          - { label: "Email",            name: "email",           widget: "string" }
-          - { label: "Address",          name: "address",         widget: "string" }
-          - { label: "City",             name: "city",            widget: "string" }
-          - { label: "State",            name: "state",           widget: "string" }
-          - { label: "ZIP",              name: "zip",             widget: "string" }
-          - { label: "Full Address",     name: "address_full",    widget: "string" }
-          - { label: "Hours",            name: "hours",           widget: "string" }
+          - { label: "Phone (display)", name: "phone",       widget: "string" }
+          - { label: "Email",           name: "email",       widget: "string" }
+          - { label: "Hours",           name: "hours",       widget: "string" }
           - label: "Payment Methods"
             name: "payment_methods"
             widget: "list"
@@ -142,48 +187,4 @@ collections:
             fields:
               - { label: "Platform", name: "platform", widget: "string" }
               - { label: "URL",      name: "url",      widget: "string" }
-              - { label: "Aria label",name: "aria",    widget: "string" }
-
-      - name: "compliance"
-        label: "Compliance Section"
-        file: "src/data/compliance.json"
-        format: json
-        fields:
-          - { label: "Heading",    name: "heading",    widget: "string" }
-          - { label: "Sub-heading",name: "subheading", widget: "string" }
-          - label: "Items"
-            name: "items"
-            widget: "list"
-            fields:
-              - { label: "Heading", name: "heading", widget: "string" }
-              - { label: "Text",    name: "text",    widget: "text"   }
-
-      - name: "contact"
-        label: "Contact Form Text"
-        file: "src/data/contact.json"
-        format: json
-        fields:
-          - { label: "Section Heading",   name: "heading",         widget: "string" }
-          - { label: "Intro Text",        name: "intro",           widget: "text"   }
-          - { label: "Tip Text",          name: "tip",             widget: "string" }
-          - { label: "Form Heading",      name: "form_heading",    widget: "string" }
-          - { label: "Form Note",         name: "form_note",       widget: "string" }
-          - { label: "Success Message",   name: "success_message", widget: "string" }
-          - { label: "Error Message",     name: "error_message",   widget: "string" }
-
-  - name: "gallery"
-    label: "Gallery Images"
-    file: "src/data/gallery.json"
-    format: json
-    fields:
-      - { label: "Heading",    name: "heading",    widget: "string" }
-      - { label: "Sub-heading",name: "subheading", widget: "string" }
-      - label: "Images"
-        name: "images"
-        widget: "list"
-        fields:
-          - { label: "Image",    name: "src",      widget: "image"  }
-          - { label: "Title",    name: "title",    widget: "string" }
-          - { label: "Category", name: "category", widget: "select",
-              options: ["Driveways","House Washing","Decks & Patios","Commercial","Fleet","Concrete"] }
-          - { label: "Tall/Featured?", name: "tall", widget: "boolean", default: false }
+              - { label: "Aria label", name: "aria",   widget: "string" }

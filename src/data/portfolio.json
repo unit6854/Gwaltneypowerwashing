@@ -1,0 +1,42 @@
+{
+  "heading": "Our Work",
+  "subheading": "Real results from real jobs across Wilson, Davidson & Rutherford Counties. Every photo and video below is a job Brian completed himself — no stock images, no crews.",
+  "categories": ["All", "Driveways", "House Washing", "Decks & Patios", "Commercial", "Concrete", "Fleet"],
+  "items": [
+    {
+      "title": "Driveway Deep Clean",
+      "src": "/images/gallery/Resized_1000005041.webp",
+      "type": "image",
+      "category": "Driveways",
+      "caption": "Mt. Juliet, TN"
+    },
+    {
+      "title": "House Exterior Wash",
+      "src": "/images/gallery/Resized_1000005223.webp",
+      "type": "image",
+      "category": "House Washing",
+      "caption": "Wilson County, TN"
+    },
+    {
+      "title": "Concrete Surface Cleaning",
+      "src": "/images/gallery/Resized_1000005052.webp",
+      "type": "image",
+      "category": "Concrete",
+      "caption": "Davidson County, TN"
+    },
+    {
+      "title": "Walkway & Steps",
+      "src": "/images/gallery/Resized_1000004800.webp",
+      "type": "image",
+      "category": "Driveways",
+      "caption": "Mt. Juliet, TN"
+    },
+    {
+      "title": "Deck Restoration",
+      "src": "/images/gallery/Resized_1000004375.webp",
+      "type": "image",
+      "category": "Decks & Patios",
+      "caption": "Hermitage, TN"
+    }
+  ]
+}
