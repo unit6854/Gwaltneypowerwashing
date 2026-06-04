@@ -140,6 +140,21 @@ const siteUrl = "https://gwaltneypressurewashing.com";
 <body>
   <slot />
 
+  <!-- Redirect Netlify Identity tokens (password reset, invite) to /admin/
+       where the Identity widget is loaded and can handle them properly -->
+  <script is:inline>
+    (function() {
+      var h = window.location.hash;
+      if (h && (
+        h.indexOf('recovery_token=')     !== -1 ||
+        h.indexOf('invite_token=')       !== -1 ||
+        h.indexOf('confirmation_token=') !== -1
+      )) {
+        window.location.replace('/admin/' + h);
+      }
+    })();
+  </script>
+
   <!-- Three.js + WebGL Water Effect -->
   <script src="/js/three.min.js" defer></script>
   <script src="/js/water-effect.js" defer></script>
