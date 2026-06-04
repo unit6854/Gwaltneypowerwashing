@@ -1916,6 +1916,31 @@ ul { list-style: none; margin: 0; padding: 0; }
   margin-bottom: 2.5rem;
 }
 
+.gpw-filter-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(34,197,94,0.2);
+  color: var(--gpw-mist);
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.45rem 1.1rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+.gpw-filter-btn:hover {
+  background: rgba(34,197,94,0.08);
+  border-color: rgba(34,197,94,0.45);
+  color: var(--gpw-text);
+}
+.gpw-filter-btn.is-active {
+  background: rgba(34,197,94,0.15);
+  border-color: var(--gpw-green);
+  color: var(--gpw-green);
+}
+
 .gpw-portfolio-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
