@@ -45,7 +45,7 @@
   "nav_links": [
     { "href": "/#services",     "label": "Services"       },
     { "href": "/#gallery",      "label": "Before & After" },
-    { "href": "/our-work",      "label": "Our Work"       },
+    { "href": "/our-work",      "label": "The Work"       },
     { "href": "/#testimonials", "label": "Reviews"        },
     { "href": "/#about",        "label": "About"          },
     { "href": "/pricing",       "label": "Pricing"        },
@@ -62,7 +62,7 @@
   "footer_company": [
     { "label": "About Brian",    "href": "/#about"        },
     { "label": "Before & After", "href": "/#gallery"      },
-    { "label": "Our Work",       "href": "/our-work"      },
+    { "label": "The Work",       "href": "/our-work"      },
     { "label": "Reviews",        "href": "/#testimonials" },
     { "label": "Pricing",        "href": "/pricing"       },
     { "label": "FAQ",            "href": "/faq"           },
